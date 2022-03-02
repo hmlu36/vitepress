@@ -19,7 +19,7 @@ module.exports = {
     title: 'Note筆記',
     description: '各式各樣的筆記',
     base: '/vitepress/',
-    repo: 'https://github.com/hmlu36/note',
+    repo: 'https://github.com/hmlu36/vitepress',
     search: true,
     serviceWorker: true,
     themeConfig: {
@@ -33,7 +33,6 @@ module.exports = {
         ],
         sidebar: require('./sidebar'),
         //lastUpdated: false, // string | boolean
-
     },
     markdown: {
         lineNumbers: true,

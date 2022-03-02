@@ -39,7 +39,9 @@
 <script>
 import VueHighcharts from 'vue3-highcharts';
 export default {
-  name: 'VueHighcharts',
+  components: {
+    VueHighcharts,
+  },
 };
 </script>
 
@@ -65,8 +67,8 @@ const getBillData = async (event) => {
         'Content-Type': 'application/json',
       },
     });
-    billData.value = response.data.records.map((entry) => entry.fields);
-    console.log(JSON.stringify(billData.value.map((entry) => entry.年月)));
+    billData.value = response.data.records.map((entry) => entry.fields).sort((a, b) => a.年月.localeCompare(b.年月));
+    console.log(JSON.stringify(billData.value));
   } catch (e) {
     console.log(e);
   }
@@ -84,9 +86,7 @@ const chartOptions = computed(() => ({
     text: '年月',
   },
   xAxis: {
-    categories: billData.value
-      .map((entry) => entry.年月)
-      .sort((a, b) => a.localeCompare(b)),
+    categories: billData.value.map((entry) => entry.年月),
   },
   yAxis: {
     title: {
