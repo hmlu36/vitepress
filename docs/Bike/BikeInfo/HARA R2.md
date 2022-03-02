@@ -22,7 +22,7 @@
 
 **規格**
 [Reference](http://goods.ruten.com.tw/item/show?21205263094868)
-| 品名 | <center>規格</center> |
+| 品名 | 規格 |
 | -------- | -------- |
 | **變速手把** | SHIMANO TIAGRA 20速變速/煞車把手組 |
 | **前變速器** | SHIMANO TIAGRA |
