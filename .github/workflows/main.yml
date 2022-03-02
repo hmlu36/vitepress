@@ -10,7 +10,7 @@ jobs:
       MY_SECRET: ${{secrets.commit_secret}}
       USER_NAME: joshua.lu
       USER_EMAIL: hmlu36@gmail.com
-      PUBLISH_DIR: ./dist
+      PUBLISH_DIR: ./docs/.vitepress/dist
       VITE_APP_KEY: ${{secrets.VITE_APP_KEY}}
       VITE_APP_ID_WEDDINGFORM: ${{secrets.VITE_APP_ID_WEDDINGFORM}}
       VITE_APP_ID_BILL: ${{secrets.VITE_APP_ID_BILL}}
