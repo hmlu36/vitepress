@@ -219,6 +219,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { reactive, onMounted } from 'vue';
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
@@ -310,7 +311,10 @@ export default {
     };
 
     onMounted(() => {
-      var textNeedCount = document.querySelectorAll('.wordcount');
+      let materializeCss = document.createElement('script')
+      materializeCss.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+      document.head.appendChild(materializeCss)
+      const textNeedCount = document.querySelectorAll('.wordcount');
       M.CharacterCounter.init(textNeedCount);
     });
     return {
@@ -321,6 +325,11 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+     @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+     @import "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css";
+</style>
+
 <style scoped>
 select {
   display: inherit;
