@@ -1,10 +1,13 @@
 body {
-   font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
-   font-size: 18px;
+  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+  font-size: 18px;
 }
 
-
 .page-footer {
-   display:none;
+  display: none;
+  background-color: transparent;
+}
+
+.nav-links {
    background-color: transparent;
- }
+}

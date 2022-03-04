@@ -517,10 +517,4 @@ button {
   transform: translate(-50%, -50%);
 }
 
-
-
-.page-footer {
-   display:none;
-   background-color: transparent;
- }
 </style>
