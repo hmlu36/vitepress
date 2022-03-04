@@ -2,7 +2,9 @@
   <Form @submit.preventDefault="onSubmit">
     <div class="card">
       <div class="card-image">
-        <img src="https://image.freepik.com/free-vector/cute-bride-groom-cartoon-wedding-invitation-card_21630-737.jpg" />
+        <img
+          src="https://image.freepik.com/free-vector/cute-bride-groom-cartoon-wedding-invitation-card_21630-737.jpg"
+        />
         <span class="card-title">
           Save the date
           <br />Join us to celebrate.
@@ -22,7 +24,13 @@
         <div class="row">
           <h5>您的大名? (真實姓+名)</h5>
           <div class="input-field col s12">
-            <Field name="fullName" as="input" type="text" rules="required" v-model="registerForm.fullName" />
+            <Field
+              name="fullName"
+              as="input"
+              type="text"
+              rules="required"
+              v-model="registerForm.fullName"
+            />
             <label for="fullName">您的回答</label>
             <ErrorMessage name="fullName" class="error" />
           </div>
@@ -31,7 +39,12 @@
         <div class="row">
           <h5>您的聯絡電話?</h5>
           <div class="input-field col s12">
-            <Field name="phoneNumber" as="input" type="text" v-model="registerForm.phoneNumber" />
+            <Field
+              name="phoneNumber"
+              as="input"
+              type="text"
+              v-model="registerForm.phoneNumber"
+            />
             <label for="phoneNumber">您的回答</label>
             <ErrorMessage name="phoneNumber" class="error" />
           </div>
@@ -41,13 +54,27 @@
           <div class="radio--group p-l-5">
             <p>
               <label>
-                <Field name="relation" as="input" type="radio" rules="required" value="男方親友" v-model="registerForm.relation" />
+                <Field
+                  name="relation"
+                  as="input"
+                  type="radio"
+                  rules="required"
+                  value="男方親友"
+                  v-model="registerForm.relation"
+                />
                 <span>男方親友</span>
               </label>
             </p>
             <p>
               <label>
-                <Field name="relation" as="input" type="radio" rules="required" value="女方親友" v-model="registerForm.relation" />
+                <Field
+                  name="relation"
+                  as="input"
+                  type="radio"
+                  rules="required"
+                  value="女方親友"
+                  v-model="registerForm.relation"
+                />
                 <span>女方親友</span>
               </label>
             </p>
@@ -59,32 +86,70 @@
           <div class="radio--group p-l-5">
             <p>
               <label>
-                <Field name="attendWedding" as="input" type="radio" rules="required" value="這是一定要的！" v-model="registerForm.attendWedding" @click="registerForm.attendEvent = true" />
+                <Field
+                  name="attendWedding"
+                  as="input"
+                  type="radio"
+                  rules="required"
+                  value="這是一定要的！"
+                  v-model="registerForm.attendWedding"
+                  @click="registerForm.attendEvent = true"
+                />
                 <span>這是一定要的！</span>
               </label>
             </p>
             <p>
               <label>
-                <Field name="attendWedding" as="input" type="radio" rules="required" value="時間上來不及參加" v-model="registerForm.attendWedding" @click="registerForm.attendEvent = true" />
+                <Field
+                  name="attendWedding"
+                  as="input"
+                  type="radio"
+                  rules="required"
+                  value="時間上來不及參加"
+                  v-model="registerForm.attendWedding"
+                  @click="registerForm.attendEvent = true"
+                />
                 <span>時間上來不及參加</span>
               </label>
             </p>
             <p>
               <label>
-                <Field name="attendWedding" as="input" type="radio" rules="required" value="參加婚宴就好" v-model="registerForm.attendWedding" @click="registerForm.attendEvent = true" />
+                <Field
+                  name="attendWedding"
+                  as="input"
+                  type="radio"
+                  rules="required"
+                  value="參加婚宴就好"
+                  v-model="registerForm.attendWedding"
+                  @click="registerForm.attendEvent = true"
+                />
                 <span>參加婚宴就好</span>
               </label>
             </p>
             <p>
               <label>
-                <Field name="attendWedding" as="input" type="radio" rules="required" value="無法出席，祝你們幸福滿滿" v-model="registerForm.attendWedding" @click="registerForm.attendEvent = false" />
+                <Field
+                  name="attendWedding"
+                  as="input"
+                  type="radio"
+                  rules="required"
+                  value="無法出席，祝你們幸福滿滿"
+                  v-model="registerForm.attendWedding"
+                  @click="registerForm.attendEvent = false"
+                />
                 <span>無法出席，祝你們幸福滿滿</span>
               </label>
             </p>
             <ErrorMessage name="attendWedding" class="error" />
           </div>
         </div>
-        <div v-if="['這是一定要的！', '時間上來不及參加', '參加婚宴就好'].includes(registerForm.attendWedding)">
+        <div
+          v-if="
+            ['這是一定要的！', '時間上來不及參加', '參加婚宴就好'].includes(
+              registerForm.attendWedding
+            )
+          "
+        >
           <div class="row">
             <h5>是否願意與參加午宴？</h5>
             <div class="radio--group p-l-5">
@@ -102,7 +167,12 @@
             <div class="row">
               <h5>當天出席人數</h5>
               <div>
-                <Field name="attendPeople" as="select" v-model="registerForm.attendPeople" rules="required|chainRequired:@registerForm.attendEvent">
+                <Field
+                  name="attendPeople"
+                  as="select"
+                  v-model="registerForm.attendPeople"
+                  rules="required|chainRequired:@registerForm.attendEvent"
+                >
                   <option value="1">1 人</option>
                   <option value="2">2 人</option>
                   <option value="3">3 人</option>
@@ -142,7 +212,11 @@
               <div v-if="registerForm.vegetarian">
                 <h5>素食餐點人數</h5>
                 <div class="radio--group p-l-5">
-                  <Field name="vegetarianNumber" as="select" v-model="registerForm.vegetarianNumber">
+                  <Field
+                    name="vegetarianNumber"
+                    as="select"
+                    v-model="registerForm.vegetarianNumber"
+                  >
                     <option value="1">1 人</option>
                     <option value="2">2 人</option>
                     <option value="3">3 人</option>
@@ -158,7 +232,12 @@
             <div class="row">
               <h5>備註</h5>
               <div class="input-field col s12">
-                <textarea id="remark" class="materialize-textarea wordcount" v-model="registerForm.remark" data-length="120"></textarea>
+                <textarea
+                  id="remark"
+                  class="materialize-textarea wordcount"
+                  v-model="registerForm.remark"
+                  data-length="120"
+                ></textarea>
                 <label for="remark">有關午宴備註說明</label>
               </div>
             </div>
@@ -169,45 +248,91 @@
           <div class="radio--group p-l-5">
             <p>
               <label>
-                <Field name="inviteType" as="input" type="radio" value="請寄給我喜帖 ~ 讓我珍藏" v-model="registerForm.inviteType" rules="required" />
+                <Field
+                  name="inviteType"
+                  as="input"
+                  type="radio"
+                  value="請寄給我喜帖 ~ 讓我珍藏"
+                  v-model="registerForm.inviteType"
+                  rules="required"
+                />
                 <span>請寄給我喜帖 ~ 讓我珍藏</span>
               </label>
             </p>
             <p>
               <label>
-                <Field name="inviteType" as="input" type="radio" value="愛護地球，請寄給我電子喜帖" v-model="registerForm.inviteType" rules="required" />
+                <Field
+                  name="inviteType"
+                  as="input"
+                  type="radio"
+                  value="愛護地球，請寄給我電子喜帖"
+                  v-model="registerForm.inviteType"
+                  rules="required"
+                />
                 <span>愛護地球，請寄給我電子喜帖</span>
               </label>
             </p>
             <p>
               <label>
-                <Field name="inviteType" as="input" type="radio" value="愛護地球，可以不用電子或紙本喜帖" v-model="registerForm.inviteType" rules="required" />
+                <Field
+                  name="inviteType"
+                  as="input"
+                  type="radio"
+                  value="愛護地球，可以不用電子或紙本喜帖"
+                  v-model="registerForm.inviteType"
+                  rules="required"
+                />
                 <span>愛護地球，紙本跟電子喜帖可以都不用</span>
               </label>
             </p>
             <ErrorMessage name="inviteType" class="error" />
           </div>
-          <div class="input-field col s12" v-if="registerForm.inviteType == '請寄給我喜帖 ~ 讓我珍藏'">
-            <Field name="inviteAddress" as="input" type="text" v-model="registerForm.inviteAddress" />
+          <div
+            class="input-field col s12"
+            v-if="registerForm.inviteType == '請寄給我喜帖 ~ 讓我珍藏'"
+          >
+            <Field
+              name="inviteAddress"
+              as="input"
+              type="text"
+              v-model="registerForm.inviteAddress"
+            />
             <label for="inviteAddress">喜帖收件地址 (含郵遞區號)</label>
             <ErrorMessage name="inviteAddress" class="error" />
           </div>
-          <div class="input-field col s12" v-if="registerForm.inviteType == '愛護地球，請寄給我電子喜帖'">
-            <Field name="inviteEmailAddress" as="input" type="email" v-model="registerForm.inviteEmailAddress" />
+          <div
+            class="input-field col s12"
+            v-if="registerForm.inviteType == '愛護地球，請寄給我電子喜帖'"
+          >
+            <Field
+              name="inviteEmailAddress"
+              as="input"
+              type="email"
+              v-model="registerForm.inviteEmailAddress"
+            />
             <label for="inviteEmailAddress">喜帖收件電子地址</label>
             <ErrorMessage name="inviteEmailAddress" class="error" />
           </div>
         </div>
         <div class="row">
           <h5>想對我們說的話 ❤️</h5>
-          <blockquote style="border-left: 5px solid #26a69a">當天會將您的祝福放在大螢幕上哦~</blockquote>
+          <blockquote style="border-left: 5px solid #26a69a">
+            當天會將您的祝福放在大螢幕上哦~
+          </blockquote>
           <div class="input-field col s12">
-            <textarea id="message" class="materialize-textarea wordcount" v-model="registerForm.message" data-length="120"></textarea>
+            <textarea
+              id="message"
+              class="materialize-textarea wordcount"
+              v-model="registerForm.message"
+              data-length="120"
+            ></textarea>
             <label for="message">您的悄悄話</label>
           </div>
         </div>
         <div class="card-action center-align">
-          <button class="btn waves-effect waves-light" type="submit">送出</button>
+          <button class="btn waves-effect waves-light" type="submit">
+            送出
+          </button>
         </div>
       </div>
     </div>
@@ -225,6 +350,9 @@ import { reactive, onMounted } from 'vue';
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+
+import 'materialize-css/dist/css/materialize.min.css'
+import M from "materialize-css";
 
 defineRule('required', (value) => {
   if (!value) {
@@ -266,10 +394,20 @@ export default {
           連絡電話: registerForm.phoneNumber,
           與新人關係: registerForm.relation,
           是否願意參加婚禮: registerForm.attendWedding,
-          是否願意參加午宴: registerForm.attendWedding === '無法出席，祝你們幸福滿滿' ? '' : registerForm.attendEvent ? '是' : '否',
+          是否願意參加午宴:
+            registerForm.attendWedding === '無法出席，祝你們幸福滿滿'
+              ? ''
+              : registerForm.attendEvent
+              ? '是'
+              : '否',
           當天出席人數: registerForm.attendPeople,
           是否需準備兒童座椅: registerForm.child,
-          是否需要安排素食餐點: registerForm.vegetarian === undefined ? '' : registerForm.vegetarian ? '是' : '否',
+          是否需要安排素食餐點:
+            registerForm.vegetarian === undefined
+              ? ''
+              : registerForm.vegetarian
+              ? '是'
+              : '否',
           素食人數: registerForm.vegetarianNumber,
           其他備註: registerForm.remark,
           喜帖寄送方式: registerForm.inviteType,
@@ -280,16 +418,26 @@ export default {
       };
       //console.log(JSON.stringify(data));
 
-      document.querySelector('.blockUI').setAttribute('style', 'display:inline');
+      document
+        .querySelector('.blockUI')
+        .setAttribute('style', 'display:inline');
       axios
-        .post(`https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID}/${airTableName}`, data, {
-          headers: {
-            Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY,
-            'Content-Type': 'application/json',
-          },
-        })
+        .post(
+          `https://api.airtable.com/v0/${
+            import.meta.env.VITE_APP_ID
+          }/${airTableName}`,
+          data,
+          {
+            headers: {
+              Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY,
+              'Content-Type': 'application/json',
+            },
+          }
+        )
         .then((response) => {
-          document.querySelector('.blockUI').setAttribute('style', 'display:none');
+          document
+            .querySelector('.blockUI')
+            .setAttribute('style', 'display:none');
           if (!!response && !!response.data.id) {
             Swal.fire({
               icon: 'success',
@@ -311,9 +459,6 @@ export default {
     };
 
     onMounted(() => {
-      let materializeCss = document.createElement('script')
-      materializeCss.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
-      document.head.appendChild(materializeCss)
       const textNeedCount = document.querySelectorAll('.wordcount');
       M.CharacterCounter.init(textNeedCount);
     });
@@ -324,12 +469,6 @@ export default {
   },
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-     @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-     @import "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css";
-</style>
-
 <style scoped>
 select {
   display: inherit;
@@ -377,4 +516,11 @@ button {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+
+.page-footer {
+   display:none;
+   background-color: transparent;
+ }
 </style>
