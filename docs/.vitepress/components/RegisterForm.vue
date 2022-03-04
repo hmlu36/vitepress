@@ -351,9 +351,6 @@ import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-import 'materialize-css/dist/css/materialize.min.css'
-import M from "materialize-css";
-
 defineRule('required', (value) => {
   if (!value) {
     return '此欄位必填';

@@ -4,9 +4,8 @@ body {
 }
 
 .page-footer {
-  display: none;
-  background-color: transparent;
-}
+   background-color: #fff;
+ }
 
 .nav-links {
    background-color: transparent;
