@@ -346,7 +346,7 @@
 </template>
 
 <script>
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, onBeforeMount } from 'vue';
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -454,10 +454,30 @@ export default {
           });
         });
     };
+    onBeforeMount(() => {
+      
+      const icon = document.createElement('link');
+      icon.setAttribute(
+        'ref',
+        'icon'
+      ); icon.setAttribute(
+        'href',
+        '/images/Wedding-Rings.ico'
+      );
+      icon.async = true;
+      document.head.appendChild(icon);
 
+      const materializeJs = document.createElement('script');
+      materializeJs.setAttribute(
+        'src',
+        'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'
+      );
+      materializeJs.async = true;
+      document.head.appendChild(materializeJs);
+    });
     onMounted(() => {
       const textNeedCount = document.querySelectorAll('.wordcount');
-      M.CharacterCounter.init(textNeedCount);
+      //M.CharacterCounter.init(textNeedCount);
     });
     return {
       onSubmit,
@@ -467,6 +487,8 @@ export default {
 };
 </script>
 <style scoped>
+@import "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css";
+
 select {
   display: inherit;
 }
@@ -513,5 +535,4 @@ button {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
 </style>

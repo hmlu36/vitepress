@@ -6,7 +6,7 @@
       value="Gas"
       v-model="billType"
       @click="getBillData($event)"
-    />瓦斯</label
+    />&emsp;瓦斯&emsp;</label
   >
   <label
     ><input
@@ -15,7 +15,7 @@
       value="Water"
       v-model="billType"
       @click="getBillData($event)"
-    />水費</label
+    />&emsp;水費&emsp;</label
   >
   <label
     ><input
@@ -24,7 +24,7 @@
       value="Electricity"
       v-model="billType"
       @click="getBillData($event)"
-    />電費</label
+    />&emsp;電費&emsp;</label
   >
   <br />
   <vue-highcharts
