@@ -346,7 +346,7 @@
 </template>
 
 <script>
-import '../css/materialize.min.css';
+import '../materialize.min.css';
 import { reactive, onMounted, onBeforeMount } from 'vue';
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
 import axios from 'axios';
