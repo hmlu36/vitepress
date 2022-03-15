@@ -346,7 +346,6 @@
 </template>
 
 <script>
-import '../materialize.min.css';
 import { reactive, onMounted, onBeforeMount } from 'vue';
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
 import axios from 'axios';
@@ -488,6 +487,8 @@ export default {
 };
 </script>
 <style scoped>
+@import "../../public/css/materialize.min.css";
+
 select {
   display: inherit;
 }
