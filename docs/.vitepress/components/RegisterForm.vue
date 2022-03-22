@@ -462,7 +462,7 @@ export default {
         'icon'
       ); icon.setAttribute(
         'href',
-        '/images/Wedding-Rings.ico'
+        '../../public/images/Wedding-Rings.ico'
       );
       icon.async = true;
       document.head.appendChild(icon);

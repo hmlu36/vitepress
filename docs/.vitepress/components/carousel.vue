@@ -1,8 +1,10 @@
 <template>
-  <Carousel :autoplay="2000" :wrap-around="true">
-    <Slide v-for="slide in photos" :key="slide">
-      <span>{{ slide }}</span>
-      <img :src="slide" />
+  <Carousel :autoplay="5000" :wrap-around="true">
+    <Slide v-for="slide in slides" :key="slide">
+      <div class="carousel__item">
+        <span style="font-size: 40px;"><strong>{{ slide.replace(".jpg", "") }}</strong></span>
+        <img :src="'/photo/' + slide" />
+      </div>
     </Slide>
 
     <template #addons>
@@ -32,10 +34,19 @@ export default {
     //console.log(JSON.stringify(photos));
 
     const photosObject = import.meta.glob('../../public/photo/*.jpg');
-    const photos = Object.keys(photosObject).map(photo => photo.replace("../../public", ""));
-    console.log(photos);
+    const slides = Object.keys(photosObject).map((photo) =>
+      photo.replace('../../public/photo/', '')
+    );
+    console.log(slides);
 
-    return { photos };
+    return { slides };
   },
 };
 </script>
+
+<style>
+.carousel__prev--in-active,
+.carousel__next--in-active {
+  display: none;
+}
+</style>
