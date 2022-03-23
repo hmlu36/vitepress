@@ -67,7 +67,9 @@ const getBillData = async (event) => {
         'Content-Type': 'application/json',
       },
     });
-    billData.value = response.data.records.map((entry) => entry.fields).sort((a, b) => a.年月.localeCompare(b.年月));
+    billData.value = response.data.records
+      .map((entry) => entry.fields)
+      .sort((a, b) => a.年月.localeCompare(b.年月));
     console.log(JSON.stringify(billData.value));
   } catch (e) {
     console.log(e);

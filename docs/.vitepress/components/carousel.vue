@@ -3,7 +3,7 @@
     <Slide v-for="slide in slides" :key="slide">
       <div class="carousel__item">
         <span style="font-size: 40px;"><strong>{{ slide.replace(".jpg", "") }}</strong></span><br/>
-        <img :src="'../../public/photo/' + slide" />
+        <img :src="'../photo/' + slide" />
       </div>
     </Slide>
 
