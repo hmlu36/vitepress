@@ -2,8 +2,8 @@
   <Carousel :autoplay="5000" :wrap-around="true">
     <Slide v-for="slide in slides" :key="slide">
       <div class="carousel__item">
-        <span style="font-size: 40px;"><strong>{{ slide.replace(".jpg", "") }}</strong></span>
-        <img :src="'/photo/' + slide" />
+        <span style="font-size: 40px;"><strong>{{ slide.replace(".jpg", "") }}</strong></span><br/>
+        <img :src="'../../public/photo/' + slide" />
       </div>
     </Slide>
 
