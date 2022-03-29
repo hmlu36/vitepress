@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as t,a as r}from"./app.015fbf38.js";const m='{"title":"\u5361\u8E0F","description":"","frontmatter":{},"headers":[],"relativePath":"Bike/BikeInfo/\u5361\u8E0F.md","lastUpdated":1648513476161}',o={},_=r("",5),n=[_];function s(c,d,i,p,h,l){return t(),a("div",null,n)}var u=e(o,[["render",s]]);export{m as __pageData,u as default};

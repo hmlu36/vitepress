@@ -1,0 +1,1 @@
+import{_ as t,c as d,o as r,a as e}from"./app.015fbf38.js";const I='{"title":"HARA R2","description":"","frontmatter":{},"headers":[],"relativePath":"Bike/BikeInfo/HARA R2.md","lastUpdated":1648513476161}',o={},a=e("",11),A=[a];function n(s,g,h,T,l,p){return r(),d("div",null,A)}var c=t(o,[["render",n]]);export{I as __pageData,c as default};

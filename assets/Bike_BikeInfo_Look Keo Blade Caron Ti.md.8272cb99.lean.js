@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as a,a as r}from"./app.015fbf38.js";const f='{"title":"Look Keo Blade Caron Ti","description":"","frontmatter":{},"headers":[],"relativePath":"Bike/BikeInfo/Look Keo Blade Caron Ti.md","lastUpdated":1648513476161}',t={},n=r("",9),i=[n];function l(p,s,c,d,_,h){return a(),o("div",null,i)}var m=e(t,[["render",l]]);export{f as __pageData,m as default};

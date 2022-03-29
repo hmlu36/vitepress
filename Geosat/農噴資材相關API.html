@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>農噴資材相關API(For Web & APP) | Note筆記</title>
+    <meta name="description" content="各式各樣的筆記">
+    <link rel="stylesheet" href="/vitepress/assets/style.2b19a36b.css">
+    <link rel="modulepreload" href="/vitepress/assets/Home.15598091.js">
+    <link rel="modulepreload" href="/vitepress/assets/app.015fbf38.js">
+    <link rel="modulepreload" href="/vitepress/assets/Geosat_農噴資材相關API.md.ee4b2e42.lean.js">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css?display=swap">
+  <meta name="viewport" content="width=device-width,user-scaleble=0,initial-scale=1.0,maximum-scale=1.0">
+  <meta name="twitter:title" content="農噴資材相關API(For Web &amp; APP) | Note筆記">
+  <meta property="og:title" content="農噴資材相關API(For Web &amp; APP) | Note筆記">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/vitepress/" aria-label="Note筆記, back to home" data-v-675d8756 data-v-cc01ef16><!----> Note筆記</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><nav class="nav-links" data-v-675d8756 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/" data-v-b8818f8c>首頁 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/Bike/" data-v-b8818f8c>🚴單車生活 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/WorkSkill/" data-v-b8818f8c>💼工作技巧 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/Wedding/" data-v-b8818f8c>💏婚禮相關 <!----></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><nav class="nav-links nav" data-v-83e92a68 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/" data-v-b8818f8c>首頁 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/Bike/" data-v-b8818f8c>🚴單車生活 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/WorkSkill/" data-v-b8818f8c>💼工作技巧 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress/Wedding/" data-v-b8818f8c>💏婚禮相關 <!----></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="農噴資材相關api-for-web-app" tabindex="-1">農噴資材相關API(For Web &amp; APP) <a class="header-anchor" href="#農噴資材相關api-for-web-app" aria-hidden="true">#</a></h1><h6 id="tags-經緯航太" tabindex="-1">tags: <code>經緯航太</code> <a class="header-anchor" href="#tags-經緯航太" aria-hidden="true">#</a></h6><p>[TOC]</p><hr><h3 id="_1-1-作物代碼下載" tabindex="-1">1-1 作物代碼下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_1-1-作物代碼下載" aria-hidden="true">#</a></h3><p userId?="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetCrop/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetCrop/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;cropName&quot;: &quot;水稻&quot;,
+      &quot;cropId&quot;: 11101
+    },
+    {
+      &quot;cropName&quot;: &quot;旱稻&quot;,
+      &quot;cropId&quot;: 11108
+    },
+    {
+      &quot;cropName&quot;: &quot;太空包菇&quot;,
+      &quot;cropId&quot;: 11111
+    },
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><table><thead><tr><th>回傳欄位名稱</th><th>回傳欄位說明</th><th>備註</th></tr></thead><tbody><tr><td>cropId</td><td>作物代碼</td><td></td></tr><tr><td>cropName</td><td>作物描述</td><td></td></tr></tbody></table><h3 id="_1-2-品種資料下載" tabindex="-1">1-2 品種資料下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_1-2-品種資料下載" aria-hidden="true">#</a></h3><p userId?="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetClassBreed/%7BcropId%7D/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetClassBreed/{cropId}/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>cropId</td><td>作物代碼</td><td></td></tr><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;cropId&quot;: &quot;12201&quot;,
+      &quot;breedNo&quot;: 200748,
+      &quot;breedName&quot;: &quot;椪柑&quot;,
+    ,
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><table><thead><tr><th>回傳欄位名稱</th><th>回傳欄位說明</th><th>備註</th></tr></thead><tbody><tr><td>cropId</td><td>作物代碼</td><td></td></tr><tr><td>breedNo</td><td>品種代碼</td><td></td></tr><tr><td>breedName</td><td>品種描述</td><td></td></tr></tbody></table><h3 id="_1-3-認證類型下載" tabindex="-1">1-3 認證類型下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_1-3-認證類型下載" aria-hidden="true">#</a></h3><p userId="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetClassBreedCertification/%7BcropId%7D/%7BbreedNo%7D/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetClassBreedCertification/{cropId}/{breedNo}/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th></tr></thead><tbody><tr><td>cropId</td><td>作物代碼</td></tr><tr><td>breedNo</td><td>品種代碼</td></tr><tr><td>userId</td><td>使用者Id</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;cropId&quot;: 15601,
+      &quot;cropName&quot;: &quot;茶葉&quot;,
+      &quot;breedNo&quot;: 203009,
+      &quot;breedName&quot;: &quot;金萱紅茶&quot;,
+      &quot;userId&quot;: &quot;34303831-26c5-442d-9c1d-d04eca57e9ab&quot;,
+      &quot;certificationType&quot;: &quot;有機&quot;
+    },
+    {
+      &quot;cropId&quot;: 12201,
+      &quot;cropName&quot;: &quot;椪柑&quot;,
+      &quot;breedNo&quot;: 200748,
+      &quot;breedName&quot;: &quot;椪柑&quot;,
+      &quot;userId&quot;: &quot;34303831-26c5-442d-9c1d-d04eca57e9ab&quot;,
+      &quot;certificationType&quot;: &quot;產銷履歷&quot;
+    },
+    {
+      &quot;cropId&quot;: 12201,
+      &quot;cropName&quot;: &quot;椪柑&quot;,
+      &quot;breedNo&quot;: 200748,
+      &quot;breedName&quot;: &quot;椪柑&quot;,
+      &quot;userId&quot;: &quot;34303831-26c5-442d-9c1d-d04eca57e9ab&quot;,
+      &quot;certificationType&quot;: &quot;有機&quot;
+    },
+    ...
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><table><thead><tr><th>回傳欄位名稱</th><th>回傳欄位說明</th><th>備註</th></tr></thead><tbody><tr><td>cropId</td><td>作物代碼</td><td></td></tr><tr><td>cropName</td><td>作物描述</td><td></td></tr><tr><td>breedNo</td><td>品種代碼</td><td></td></tr><tr><td>breedName</td><td>品種描述</td><td></td></tr><tr><td>userId</td><td>使用者Id</td><td></td></tr><tr><td>certificationType</td><td>認證類型</td><td></td></tr></tbody></table><h3 id="_1-4-所有作物品種下載" tabindex="-1">1-4 所有作物品種下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_1-4-所有作物品種下載" aria-hidden="true">#</a></h3><p userId="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetAllClassBreed/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetAllClassBreed/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th></tr></thead><tbody><tr><td>userId</td><td>使用者Id</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;e1367419-529f-4982-a9a8-d165ff3486ee&quot;,
+      &quot;cropId&quot;: 11101,
+      &quot;cropName&quot;: &quot;水稻&quot;,
+      &quot;breedNo&quot;: 535,
+      &quot;breedName&quot;: &quot;台農71號&quot;,
+      &quot;userId&quot;: &quot;29c465d1-c680-44db-a567-74b1454c8c64&quot;,
+      &quot;certificationType&quot;: &quot;&quot;
+    }
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><table><thead><tr><th>回傳欄位名稱</th><th>回傳欄位說明</th><th>屬性</th></tr></thead><tbody><tr><td>id</td><td>作物代碼流水號</td><td>guid</td></tr><tr><td>cropId</td><td>作物代碼</td><td>int</td></tr><tr><td>cropName</td><td>作物描述</td><td>string</td></tr><tr><td>breedNo</td><td>品種代碼</td><td>int</td></tr><tr><td>breedName</td><td>品種描述</td><td>string</td></tr><tr><td>userId</td><td>使用者Id</td><td>guid</td></tr><tr><td>certificationType</td><td>認證類型</td><td>string</td></tr></tbody></table><h3 id="_1-5-作物代碼上傳" tabindex="-1">1-5 作物代碼上傳 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_1-5-作物代碼上傳" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/CreateClassBreed" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/CreateClassBreed</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th></tr></thead><tbody><tr><td>CropId</td><td>作物代碼</td><td>int</td></tr><tr><td>BreedNo</td><td>品種代碼</td><td>int</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td></tr><tr><td>CertificationType</td><td>認證類型</td><td>string</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_1-6-作物代碼刪除" tabindex="-1">1-6 作物代碼刪除 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_1-6-作物代碼刪除" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/DeleteClassBreed" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/DeleteClassBreed</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th></tr></thead><tbody><tr><td>Id</td><td>作物流水號ID</td><td>guid</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_1-7-作物代碼編輯" tabindex="-1">1-7 作物代碼編輯 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_1-7-作物代碼編輯" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/EditClassBreed" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/EditClassBreed</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th><th>備註</th></tr></thead><tbody><tr><td>Id</td><td>作物流水號</td><td>guid</td><td></td></tr><tr><td>CropId</td><td>作物代碼</td><td>int</td><td></td></tr><tr><td>BreedNo</td><td>品種代碼</td><td>int</td><td></td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td><td></td></tr><tr><td>CertificationType</td><td>認證類型</td><td>string</td><td>可不填</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_2-1-農藥種類下載" tabindex="-1">2-1 農藥種類下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_2-1-農藥種類下載" aria-hidden="true">#</a></h3><p userId?="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetPestCategory/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetPestCategory/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;key&quot;: &quot;殺蟎劑(ACARICIDE)&quot;,
+      &quot;value&quot;: &quot;殺蟎劑(ACARICIDE)&quot;
+    },
+    {
+      &quot;key&quot;: &quot;殺茵劑(FUNGICIDE)&quot;,
+      &quot;value&quot;: &quot;殺茵劑(FUNGICIDE)&quot;
+    },
+    {
+      &quot;key&quot;: &quot;除藻劑(ALGECIDE)&quot;,
+      &quot;value&quot;: &quot;除藻劑(ALGECIDE)&quot;
+    },
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th></tr></thead><tbody><tr><td>key</td><td>農藥種類名稱</td></tr><tr><td>value</td><td>農藥種類名稱</td></tr></tbody></table><h3 id="_2-2-農藥資材類型下載-deprecated" tabindex="-1"><s>2-2 農藥資材類型下載(Deprecated)</s> <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_2-2-農藥資材類型下載-deprecated" aria-hidden="true">#</a></h3><p userId="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetPestType/%7Bcategory%7D/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetPestType/{category}/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>category</td><td>農藥種類</td><td></td></tr><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;category&quot;: &quot;G-除藻劑(ALGECIDE)&quot;
+      &quot;pestType&quot;: &quot;液&quot;
+    },
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th></tr></thead><tbody><tr><td>category</td><td>農藥種類名稱</td></tr><tr><td>pestType</td><td>農藥資材類型</td></tr></tbody></table><h3 id="_2-3-農藥明細下載" tabindex="-1">2-3 農藥明細下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_2-3-農藥明細下載" aria-hidden="true">#</a></h3><p userId?="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetPest/%7Bcategory%7D/%7BpestType?%7D/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetPest/{category}/{pestType?}/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>category</td><td>農藥種類</td><td></td></tr><tr><td>pestType</td><td>農藥資材類型</td><td></td></tr><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;category&quot;: &quot;F-殺茵劑(FUNGICIDE)&quot;,
+      &quot;pestName&quot;: &quot;貝芬錳&quot;,
+      &quot;brandName&quot;: &quot;DELSCENE M&quot;,
+      &quot;companyName&quot;: null,
+      &quot;id&quot;: &quot;3de9e7c3-3f24-427d-8d2e-0009f9f35a7e&quot;
+    },
+    {
+      &quot;category&quot;: &quot;F-殺茵劑(FUNGICIDE)&quot;,
+      &quot;pestName&quot;: &quot;凡殺護矽得&quot;,
+      &quot;brandName&quot;: null,
+      &quot;companyName&quot;: &quot;台灣杜邦&quot;,
+      &quot;id&quot;: &quot;0b07451f-da95-4e42-87ef-00ceb312b0a2&quot;
+    },
+    {
+      &quot;category&quot;: &quot;F-殺茵劑(FUNGICIDE)&quot;,
+      &quot;pestName&quot;: &quot;殺紋依得利&quot;,
+      &quot;brandName&quot;: null,
+      &quot;companyName&quot;: null,
+      &quot;id&quot;: &quot;4486ef81-2159-45c2-a00a-02f56df01683&quot;
+    },
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>id</td><td>農藥ID</td><td>Web才會有</td></tr><tr><td>category</td><td>農藥種類名稱</td><td>App才會有</td></tr><tr><td>pestType</td><td>農藥資材類型</td><td></td></tr><tr><td>pestName</td><td>商品名稱</td><td></td></tr><tr><td>brandName</td><td>原始廠商</td><td></td></tr><tr><td>companyName</td><td>登記廠商</td><td></td></tr></tbody></table><h3 id="_2-4-所有農藥明細下載" tabindex="-1">2-4 所有農藥明細下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_2-4-所有農藥明細下載" aria-hidden="true">#</a></h3><p userId="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetAllPest/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetAllPest/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;03e0a5e3-157a-4351-8ade-2afc9e23b3b4&quot;,
+      &quot;category&quot;: &quot;殺線虫劑&quot;,
+      &quot;pestName&quot;: &quot;福賽絕&quot;,
+      &quot;brandName&quot;: &quot;IKI-1145&quot;,
+      &quot;companyName&quot;: &quot;台灣石原產業&quot;,
+      &quot;pestType&quot;: &quot;液&quot;
+    }
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>id</td><td>流水號Id</td><td></td></tr><tr><td>category</td><td>農藥種類名稱</td><td></td></tr><tr><td>pestType</td><td>農藥資材類型</td><td></td></tr><tr><td>pestName</td><td>商品名稱</td><td></td></tr><tr><td>brandName</td><td>原始廠商</td><td></td></tr><tr><td>companyName</td><td>登記廠商</td><td></td></tr></tbody></table><h3 id="_2-5-農藥設定上傳" tabindex="-1">2-5 農藥設定上傳 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_2-5-農藥設定上傳" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/CreatePest" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/CreatePest</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th></tr></thead><tbody><tr><td>PestId</td><td>農藥ID</td><td>guid</td></tr><tr><td>PestType</td><td>農藥資材類型</td><td>string</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_2-6-農藥設定刪除" tabindex="-1">2-6 農藥設定刪除 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_2-6-農藥設定刪除" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/DeletePest" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/DeletePest</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th></tr></thead><tbody><tr><td>Id</td><td>農藥流水號ID</td><td>guid</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_2-7-農藥設定編輯" tabindex="-1">2-7 農藥設定編輯 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_2-7-農藥設定編輯" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/EditPest" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/EditPest</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th><th>備註</th></tr></thead><tbody><tr><td>Id</td><td>農藥流水號</td><td>guid</td><td></td></tr><tr><td>PestId</td><td>農藥ID</td><td>guid</td><td></td></tr><tr><td>PestType</td><td>農藥資材類型</td><td>string</td><td>可不填</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_3-1-肥料種類下載" tabindex="-1">3-1 肥料種類下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_3-1-肥料種類下載" aria-hidden="true">#</a></h3><p userId?="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetFertCategory/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetFertCategory/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;key&quot;: &quot;一般堆肥&quot;,
+      &quot;value&quot;: &quot;一般堆肥&quot;
+    },
+    {
+      &quot;key&quot;: &quot;乾燥茵體肥料&quot;,
+      &quot;value&quot;: &quot;乾燥茵體肥料&quot;
+    },
+    {
+      &quot;key&quot;: &quot;硫酸鎂肥料&quot;,
+      &quot;value&quot;: &quot;硫酸鎂肥料&quot;
+    },
+    {
+      &quot;key&quot;: &quot;硫酸鋅肥料&quot;,
+      &quot;value&quot;: &quot;硫酸鋅肥料&quot;
+    },
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th></tr></thead><tbody><tr><td>key</td><td>肥料種類名稱</td></tr><tr><td>value</td><td>肥料種類名稱</td></tr></tbody></table><h3 id="_3-2-肥料資材類型下載-deprecated" tabindex="-1"><s>3-2 肥料資材類型下載(Deprecated)</s> <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_3-2-肥料資材類型下載-deprecated" aria-hidden="true">#</a></h3><p userId?="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetFertType/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetFertType/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: [
+    {
+      &quot;category&quot;: &quot;1-12-硝酸銨鈣肥料&quot;
+      &quot;fertType&quot;: &quot;乳膠&quot;
+    },
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th></tr></thead><tbody><tr><td>category</td><td>肥料種類名稱</td></tr><tr><td>fertType</td><td>肥料資材類型</td></tr></tbody></table><h3 id="_3-3-肥料明細下載" tabindex="-1">3-3 肥料明細下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_3-3-肥料明細下載" aria-hidden="true">#</a></h3><p userId?="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetFert/%7Bcategory%7D/%7BfertType?%7D/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetFert/{category}/{fertType?}/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>category</td><td>肥料種類</td><td></td></tr><tr><td>fertType</td><td>肥料資材類型</td><td></td></tr><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: 
+    {
+        &quot;id&quot;:&quot;326b349b-2c0e-4755-aed6-d76877fbd9ad&quot;,
+        &quot;category&quot;:&quot;硝酸銨鈣肥料&quot;,
+        &quot;brandName&quot;:&quot;亞拉牌硝酸銨鈣&quot;,
+        &quot;companyName&quot;:&quot;0411-豪鑫貿易有限公司&quot;,
+        &quot;fertType&quot;:&quot;乳膠&quot;
+    },
+    ...
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>id</td><td>肥料種類</td><td></td></tr><tr><td>category</td><td>肥料種類</td><td></td></tr><tr><td>brandName</td><td>商品名稱</td><td></td></tr><tr><td>companyName</td><td>登記廠商</td><td></td></tr><tr><td>fertType</td><td>肥料資材類型</td><td></td></tr></tbody></table><h3 id="_3-4-所有肥料明細下載" tabindex="-1">3-4 所有肥料明細下載 <img src="https://img.shields.io/badge/-GET-blue.svg" alt="GET"> <a class="header-anchor" href="#_3-4-所有肥料明細下載" aria-hidden="true">#</a></h3><p userId="">URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetAllFert/" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/GetAllFert/</a></p><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>userId</td><td>使用者Id</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;ec239ad4-356e-45b8-9b9b-c63f5c52fd77&quot;,
+      &quot;category&quot;: &quot;雜項次量微量要素肥料&quot;,
+      &quot;brandName&quot;: &quot;精準奧綠313S&quot;,
+      &quot;companyName&quot;: &quot;大漢園景科技有限公司&quot;,
+      &quot;fertType&quot;: &quot;液&quot;
+    },
+  ]
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><table><thead><tr><th>參數名稱</th><th>參數說明</th><th>備註</th></tr></thead><tbody><tr><td>id</td><td>流水號Id</td><td></td></tr><tr><td>category</td><td>肥料種類</td><td></td></tr><tr><td>brandName</td><td>商品名稱</td><td></td></tr><tr><td>companyName</td><td>登記廠商</td><td></td></tr><tr><td>fertType</td><td>肥料資材類型</td><td></td></tr></tbody></table><h3 id="_3-5-肥料設定上傳" tabindex="-1">3-5 肥料設定上傳 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_3-5-肥料設定上傳" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/CreateFert" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/CreateFert</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th></tr></thead><tbody><tr><td>FertId</td><td>肥料ID</td><td>guid</td></tr><tr><td>FertType</td><td>肥料資材類型</td><td>string</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_3-6-肥料設定刪除" tabindex="-1">3-6 肥料設定刪除 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_3-6-肥料設定刪除" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/DeleteFert" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/DeleteFert</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th></tr></thead><tbody><tr><td>Id</td><td>肥料流水號ID</td><td>guid</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_3-7-肥料設定編輯" tabindex="-1">3-7 肥料設定編輯 <img src="https://img.shields.io/badge/-POST-brightgreen.svg" alt="POST"> <a class="header-anchor" href="#_3-7-肥料設定編輯" aria-hidden="true">#</a></h3><p>URL: <a href="https://cloud.geosat.com.tw/Geoapi/ResumeRecord/EditFert" target="_blank" rel="noopener noreferrer">https://cloud.geosat.com.tw/Geoapi/ResumeRecord/EditFert</a></p><table><thead><tr><th>欄位</th><th>名稱</th><th>屬性</th><th>備註</th></tr></thead><tbody><tr><td>Id</td><td>肥料流水號</td><td>guid</td><td></td></tr><tr><td>FertId</td><td>肥料ID</td><td>guid</td><td></td></tr><tr><td>FertType</td><td>肥料資材類型</td><td>string</td><td>可不填</td></tr><tr><td>UserId</td><td>使用者ID</td><td>guid</td><td></td></tr></tbody></table><p>Response:</p><ol><li><img src="https://img.shields.io/badge/-200-brightgreen.svg" alt="200"></li></ol><div class="language-json="><pre><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;data&quot;: null
+}</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"bike_bikeinfo_700c通勤車 有無推薦25c~28c外胎.md\":\"ed668786\",\"bike_bikeinfo_bont roit.md\":\"b8e12116\",\"bike_bikeinfo_hara r2.md\":\"06ff5319\",\"bike_bikeinfo_look keo blade caron ti.md\":\"8272cb99\",\"bike_bikeinfo_swissstop煞車皮.md\":\"1f321857\",\"bike_bikeinfo_index.md\":\"707cbeed\",\"bike_bikeinfo_上卡注意事項.md\":\"6e3b9aad\",\"bike_bikeinfo_公路車環島.md\":\"90b8c0da\",\"bike_bikeinfo_公路車等級區分.md\":\"b04e7fa4\",\"bike_bikeinfo_前輪能左右對調.md\":\"bd969a78\",\"bike_bikeinfo_卡踏.md\":\"974a5275\",\"bike_bikeinfo_單車的花鼓滾珠， 一般可以用多久.md\":\"bcc0d66e\",\"bike_bikeinfo_環法選手症.md\":\"9e4a60a5\",\"bike_bikeinfo_自行車保養.md\":\"988bab45\",\"bike_bikeinfo_裝備(更新中...).md\":\"35460fae\",\"bike_bikeinfo_變數等級.md\":\"649fbcb0\",\"bike_bikeinfo_車架-鋁.md\":\"b51b925b\",\"bike_bikeinfo_車架幾何.md\":\"defd67e5\",\"bike_bikeinfo_車胎規格.md\":\"152d3864\",\"bike_bikeinfo_輕量輪 不等於 爬坡輪.md\":\"9f7813b3\",\"bike_bikeinfo_騎乘姿勢.md\":\"7eec6c8b\",\"bike_biketravel_20180216_梅山36彎.md\":\"ec38aa80\",\"bike_biketravel_20180219_霧台神山.md\":\"e74072ea\",\"bike_biketravel_20180304_愛河之心.md\":\"7edce394\",\"bike_biketravel_20180317_學甲麥田捕手_蜀葵花.md\":\"f4ec52f7\",\"bike_biketravel_20180324_學甲_路樹百k之旅.md\":\"67e2a7ce\",\"bike_biketravel_20180331~0401_那瑪夏小旅行.md\":\"2227656f\",\"bike_biketravel_20180402_如鴿的行板.md\":\"95048455\",\"bike_biketravel_20180407_神山春末之旅.md\":\"e1870387\",\"bike_biketravel_20180414_南圳綠堤、山上向日葵花海.md\":\"0019af3d\",\"bike_biketravel_20180416_賽鴿手的狂想曲.md\":\"33f1985a\",\"bike_biketravel_20180421_桃紅陣雨花旗木.md\":\"615c037f\",\"bike_biketravel_20180428_台南知事官邸.md\":\"3309ce55\",\"bike_biketravel_20180501_懷疑人生長征.md\":\"4cb9e282\",\"bike_biketravel_20180507_但以理書前言.md\":\"dc3541d5\",\"bike_biketravel_20180512_湖內番茄會社.md\":\"5c341ecd\",\"bike_biketravel_20180517_但以理書第一章.md\":\"9d48b638\",\"bike_biketravel_20180519_古蹟巡禮.md\":\"c35f1640\",\"bike_biketravel_20180525_nokia_舊日情愫、新智慧型手機.md\":\"18e37230\",\"bike_biketravel_20180526_台南大學_台南測候所.md\":\"9f766423\",\"bike_biketravel_20180528_但以理書第二章.md\":\"10c802a2\",\"bike_biketravel_20180602_小東公園_321藝術聚落.md\":\"385bc4f2\",\"bike_biketravel_20180604_但以理書第三章.md\":\"56c93df8\",\"bike_biketravel_20180608_中興興村_霧峰林家.md\":\"9387d08b\",\"bike_biketravel_20180609_安平舊聚落.md\":\"0183cb89\",\"bike_biketravel_20180611_但以理書第四章.md\":\"53891c93\",\"bike_biketravel_20180616_番茄會社_巴克禮公園.md\":\"4f35d764\",\"bike_biketravel_20180624_台南神學院.md\":\"52ee0afb\",\"bike_biketravel_20180626_但以理書第五章.md\":\"6fd0a5c9\",\"bike_biketravel_20180707_安平憶想曲.md\":\"adb463d1\",\"bike_biketravel_20180714_安平水鳥公園_美食之旅.md\":\"48c62443\",\"bike_biketravel_20180715_但以理書第六章.md\":\"e48cf917\",\"bike_biketravel_20180721_黃金海岸_喜樹灣裡.md\":\"503505e7\",\"bike_biketravel_20180728_奇美博物物館_保安車站.md\":\"24c1c43d\",\"bike_biketravel_20180728_小組信息_無花果樹的比喻_slide.md\":\"9223a8be\",\"bike_biketravel_20180804_漁光島_夢幻雲彩之旅.md\":\"2e7a6759\",\"bike_biketravel_20180811_木架山大草原.md\":\"b905ab6a\",\"bike_biketravel_20180818_虎頭埤.md\":\"ac99ed7d\",\"bike_biketravel_20180901_台江國家公園.md\":\"808d671c\",\"bike_biketravel_20181006_大內.md\":\"148e46eb\",\"bike_biketravel_20181006_小組信息_禱告與公義_slide.md\":\"37d681b3\",\"bike_biketravel_20181013_嘉義婚宴.md\":\"526f5290\",\"bike_biketravel_20181020_德元埤荷蘭村.md\":\"bf35b69b\",\"bike_biketravel_20181103_橋頭海灣公園.md\":\"2901934b\",\"bike_biketravel_index.md\":\"5f35b024\",\"bike_biketravel_test_slide.md\":\"bf630039\",\"bike_biketravel_以小博大、以少擊多.md\":\"ff192f7c\",\"bike_biketravel_小鋼炮-m710q袖珍桌上型電腦.md\":\"538981bd\",\"bike_index.md\":\"2e5076d4\",\"geosat_2020.04.27菁寮實地測試.md\":\"5a1d7aac\",\"geosat_2020.05.08aws教育訓練.md\":\"00b4f9ff\",\"geosat_index.md\":\"2a3efc38\",\"geosat_農噴資材相關api.md\":\"ee4b2e42\",\"house_index.md\":\"711885b2\",\"house_比對表.md\":\"3a0f39d5\",\"wedding_index.md\":\"2589c192\",\"wedding_問券調查.md\":\"e51b3af6\",\"wedding_婚禮流程.md\":\"e75d9ab5\",\"wedding_婚禮流程完整版.md\":\"c7bab1f7\",\"wedding_帳單.md\":\"0a32e662\",\"wedding_成長交往照片.md\":\"8a38e89f\",\"wedding_留言板.md\":\"0c64ab2b\",\"workskill_sql server pagination.md\":\"e503e42e\",\"workskill_unix 指令.md\":\"97ecfcfb\",\"workskill_index.md\":\"278c3a7e\",\"index.md\":\"86920b94\"}")</script>
+    <script type="module" async src="/vitepress/assets/app.015fbf38.js"></script>
+    
+  </body>
+</html>

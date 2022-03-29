@@ -1,0 +1,1 @@
+import{_ as t,c as d,o as r,a}from"./app.015fbf38.js";const b='{"title":"UNIX \u6307\u4EE4","description":"","frontmatter":{},"headers":[],"relativePath":"WorkSkill/Unix \u6307\u4EE4.md","lastUpdated":1648513476165}',e={},c=a("",8),o=[c];function i(n,p,h,s,m,_){return r(),d("div",null,o)}var u=t(e,[["render",i]]);export{b as __pageData,u as default};

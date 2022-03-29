@@ -1,0 +1,1 @@
+import{_ as e,c as t,o,a as r}from"./app.015fbf38.js";const l='{"title":"Bont Roit","description":"","frontmatter":{},"headers":[],"relativePath":"Bike/BikeInfo/Bont Roit.md","lastUpdated":1648513476161}',a={},n=r("",9),i=[n];function c(p,s,_,h,d,f){return o(),t("div",null,i)}var m=e(a,[["render",c]]);export{l as __pageData,m as default};

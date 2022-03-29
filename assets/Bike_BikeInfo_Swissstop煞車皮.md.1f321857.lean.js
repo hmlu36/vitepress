@@ -1,0 +1,1 @@
+import{_ as e,c as s,o as t,a}from"./app.015fbf38.js";const w='{"title":"Swissstop\u715E\u8ECA\u76AE","description":"","frontmatter":{},"headers":[],"relativePath":"Bike/BikeInfo/Swissstop\u715E\u8ECA\u76AE.md","lastUpdated":1648513476161}',o={},r=a("",5),i=[r];function p(_,n,c,d,h,l){return t(),s("div",null,i)}var S=e(o,[["render",p]]);export{w as __pageData,S as default};

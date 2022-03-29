@@ -1,0 +1,1 @@
+import{_ as e,c as r,o as t,a}from"./app.015fbf38.js";const _='{"title":"\u81EA\u884C\u8ECAKnow-How","description":"","frontmatter":{},"headers":[],"relativePath":"Bike/BikeInfo/index.md","lastUpdated":1648513476161}',l={},o=a("",5),p=[o];function i(n,h,f,d,c,m){return t(),r("div",null,p)}var w=e(l,[["render",i]]);export{_ as __pageData,w as default};

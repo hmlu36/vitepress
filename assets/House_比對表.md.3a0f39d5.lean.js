@@ -1,0 +1,1 @@
+import{_ as t,c as d,o as r,a as e}from"./app.015fbf38.js";const f='{"title":"\u6BD4\u5C0D\u8868","description":"","frontmatter":{},"headers":[],"relativePath":"House/\u6BD4\u5C0D\u8868.md","lastUpdated":1648513476165}',a={},_=e("",2),o=[_];function s(c,n,h,i,b,l){return r(),d("div",null,o)}var u=t(a,[["render",s]]);export{f as __pageData,u as default};
