@@ -5,7 +5,7 @@
 參考連結：https://ithelp.ithome.com.tw/articles/10190424
 
 **使用語法**
-```sql
+```
 SELECT *
 FROM XXXTable
 --如果要使用分頁語法，一定要加上排序，不然會出錯。
@@ -17,14 +17,14 @@ FETCH NEXT k ROWS ONLY
 
 
 **取得分頁數**
-```sql
+```
 select ceiling(count(1) / PageSize) TotalPages 
   from XXXTable
 -- ceiling 無條件進入
 ```
 
 **分頁語法**
-```sql
+```
 select * from XXXTable
 order by id desc
 OFFSET $offset$ ROWS FETCH NEXT $pageSize$ ROWS ONLY
