@@ -72,11 +72,11 @@ module.exports = {
     '/WorkSkill/': [
         {
             text: '💼工作技巧',
-            //children: getSidebars('WorkSkill')
-            children: [
-                { text: 'Unix 指令', link: '/WorkSkill/Unix 指令.html'},
-                { text: 'SQL Server 分頁技巧', link: '/WorkSkill/SQL Server Pagination.html'},
-            ]
+            children: getSidebars('WorkSkill')
+            //children: [
+            //    { text: 'Unix 指令', link: '/WorkSkill/Unix 指令.html'},
+            //    { text: 'SQL Server 分頁技巧', link: '/WorkSkill/SQL Server Pagination.html'},
+            //]
         },
     ],
     '/Wedding/': [
