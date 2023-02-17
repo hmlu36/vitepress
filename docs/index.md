@@ -7,5 +7,5 @@ features:
 - title: 工作
   details: 工作相關的紀錄
 - title: 婚禮
-footer: CC0-1.0 License | Copyright © 2022
+footer: CC0-1.0 License | Copyright © 2023
 ---
