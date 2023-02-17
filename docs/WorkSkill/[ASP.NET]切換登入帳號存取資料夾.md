@@ -3,10 +3,9 @@
 ###### tags: `工作`
 
 
-試了很久，連接網路上芳鄰的資料夾
-後來找到這篇，可以成功存取檔案
-參考: https://docs.microsoft.com/zh-TW/troubleshoot/aspnet/implement-impersonation
-
+試了很久，連接網路上芳鄰的資料夾  
+後來找到這篇，可以成功存取檔案  
+參考: https://docs.microsoft.com/zh-TW/troubleshoot/aspnet/implement-impersonation  
 
 ```cs
 public class ImpersonateHelper {
