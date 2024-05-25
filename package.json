@@ -6,7 +6,8 @@
   },
   "devDependencies": {
     "axios": "^0.21.1",
-    "vitepress": "^0.21.6"
+    "vitepress": "^0.21.6",
+    "@vue/compiler-sfc": "npm:@vue/compiler-sfc@^3"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^2.2.2",
@@ -20,7 +21,7 @@
     "highlightjs-vue": "^1.0.0",
     "sweetalert2": "^11.4.4",
     "vee-validate": "^4.5.9",
-    "vue": "^3.4.27",
+    "vue": "^3.2.26",
     "vue3-carousel": "^0.1.36",
     "vue3-highcharts": "^0.1.3"
   }
