@@ -57,13 +57,11 @@ const getBillData = async (event) => {
   console.log(dataType);
   billType.value = dataType;
 
-  const url = `https://api.airtable.com/v0/${
-    import.meta.env.VITE_APP_ID_BILL
-  }/${dataType}`;
+  const url = `https://api.airtable.com/v0/app6L1zlszKCSnYZf/${dataType}?maxRecords=100&view=data`;
   try {
     const response = await axios.get(url, {
       headers: {
-        Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY,
+        Authorization: 'Bearer ' + import.meta.env.VITE_AIRTALBE_API_KEY,
         'Content-Type': 'application/json',
       },
     });
