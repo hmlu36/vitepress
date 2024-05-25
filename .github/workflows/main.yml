@@ -14,6 +14,7 @@ jobs:
       VITE_APP_KEY: ${{secrets.VITE_APP_KEY}}
       VITE_APP_ID_WEDDINGFORM: ${{secrets.VITE_APP_ID_WEDDINGFORM}}
       VITE_APP_ID_BILL: ${{secrets.VITE_APP_ID_BILL}}
+      VITE_AIRTALBE_API_KEY: ${{secrets.VITE_AIRTALBE_API_KEY}}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -27,6 +28,7 @@ jobs:
       - name: npm install
         run: |
           npm install
+          npm install vue@latest @vue/compiler-sfc
       - name: npm run build
         run: |
           npm run build
