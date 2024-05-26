@@ -5,9 +5,9 @@
     "serve": "vitepress serve docs"
   },
   "devDependencies": {
-    "axios": "^0.21.1",
-    "vitepress": "^0.21.6",
-    "@vue/compiler-sfc": "npm:@vue/compiler-sfc@^3"
+    "@vue/compiler-sfc": "npm:@vue/compiler-sfc@^3",
+    "axios": "^1.7.2",
+    "vitepress": "^1.2.2"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^2.2.2",
