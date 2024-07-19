@@ -2,3 +2,9 @@ body {
   font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
   font-size: 18px;
 }
+
+@media (max-width: 768px) {
+  .VPLocalNav {
+    display: none !important;
+  }
+}
