@@ -16,7 +16,6 @@
     "core-js": "^3.6.5",
     "dotenv": "^14.3.0",
     "gray-matter": "^4.0.2",
-    "highcharts": "^9.3.3",
     "highcharts-vue": "^2.0.1",
     "highlight.js": "^11.4.0",
     "highlightjs-vue": "^1.0.0",

@@ -1,60 +1,103 @@
 <template>
-  <label>
-    <input
+  <label
+    ><input
       type="radio"
       name="billType-radio"
       value="Gas"
       v-model="billType"
-      @click="getBillData($event)"
+      @change="getBillData"
     />瓦斯</label
   >&emsp;
-  <label>
-    <input
+  <label
+    ><input
       type="radio"
       name="billType-radio"
       value="Water"
       v-model="billType"
-      @click="getBillData($event)"
+      @change="getBillData"
     />水費</label
   >&emsp;
-  <label>
-    <input
+  <label
+    ><input
       type="radio"
       name="billType-radio"
       value="Electricity"
       v-model="billType"
-      @click="getBillData($event)"
+      @change="getBillData"
     />電費</label
   >
   <br />
   <highcharts
-    :constructor-type="'chart'"
     :options="chartOptions"
-  ></highcharts>
+  />
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import Highcharts from 'highcharts';
+import { defineComponent, ref, onMounted, computed } from 'vue';
 import HighchartsVue from 'highcharts-vue';
+import axios from 'axios';
 
 export default defineComponent({
-  name: 'Bill',
   components: {
     highcharts: HighchartsVue.component
   },
-  data() {
-    return {
-      billType: '',
-      chartOptions: {
-        // 定義你的圖表選項
+  setup() {
+    const billData = ref([]);
+    const billType = ref('Gas');
+
+    const getBillData = async () => {
+      const url = `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_BILL}/${billType.value}?maxRecords=100&view=data`;
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            Authorization: 'Bearer ' + import.meta.env.VITE_AIRTALBE_API_KEY,
+            'Content-Type': 'application/json',
+          },
+        });
+        billData.value = response.data.records
+          .map((entry) => entry.fields)
+          .sort((a, b) => a.年月.localeCompare(b.年月));
+      } catch (e) {
+        console.error(e);
       }
     };
-  },
-  methods: {
-    getBillData(event) {
-      // 實現獲取賬單數據的邏輯
-    }
+
+    onMounted(() => {
+      getBillData();
+    });
+
+    const chartOptions = computed(() => ({
+      chart: {
+        type: 'line',
+      },
+      title: {
+        text: '年月',
+      },
+      xAxis: {
+        categories: billData.value.map((entry) => entry.年月),
+      },
+      yAxis: {
+        title: {
+          text: '費用',
+          align: 'high',
+          offset: 0,
+          rotation: 0,
+          y: -10,
+        },
+      },
+      series: [
+        {
+          name: '帳單資訊',
+          data: billData.value.map((entry) => Number(entry.費用)),
+        },
+      ],
+    }));
+
+    return {
+      billType,
+      chartOptions,
+      getBillData,
+    };
   }
 });
 </script>
