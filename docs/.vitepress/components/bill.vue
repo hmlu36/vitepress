@@ -27,77 +27,69 @@
     />電費</label
   >
   <br />
-  <highcharts
-    :options="chartOptions"
-  />
+  <div>
+    <!-- 使用 v-if 確保 HighchartsVue 只在客戶端渲染 -->
+    <component :is="HighchartsVue" v-if="HighchartsVue" :options="chartOptions" />
+  </div>
 </template>
 
-<script>
-import { defineComponent, ref, onMounted, computed } from 'vue';
-import HighchartsVue from 'highcharts-vue';
+<script setup>
+import { defineComponent, ref, onMounted, computed, defineAsyncComponent } from 'vue';
 import axios from 'axios';
 
-export default defineComponent({
-  components: {
-    highcharts: HighchartsVue.component
-  },
-  setup() {
-    const billData = ref([]);
-    const billType = ref('Gas');
+// 動態導入 highcharts-vue
+const HighchartsVue = defineAsyncComponent(() => import('highcharts-vue'));
 
-    const getBillData = async () => {
-      const url = `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_BILL}/${billType.value}?maxRecords=100&view=data`;
-      try {
-        const response = await axios.get(url, {
-          headers: {
-            Authorization: 'Bearer ' + import.meta.env.VITE_AIRTALBE_API_KEY,
-            'Content-Type': 'application/json',
-          },
-        });
-        billData.value = response.data.records
-          .map((entry) => entry.fields)
-          .sort((a, b) => a.年月.localeCompare(b.年月));
-      } catch (e) {
-        console.error(e);
-      }
-    };
 
-    onMounted(() => {
-      getBillData();
+const billData = ref([]);
+const billType = ref('Gas');
+
+const getBillData = async () => {
+  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_BILL}/${billType.value}?maxRecords=100&view=data`;
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: 'Bearer ' + import.meta.env.VITE_AIRTALBE_API_KEY,
+        'Content-Type': 'application/json',
+      },
     });
-
-    const chartOptions = computed(() => ({
-      chart: {
-        type: 'line',
-      },
-      title: {
-        text: '年月',
-      },
-      xAxis: {
-        categories: billData.value.map((entry) => entry.年月),
-      },
-      yAxis: {
-        title: {
-          text: '費用',
-          align: 'high',
-          offset: 0,
-          rotation: 0,
-          y: -10,
-        },
-      },
-      series: [
-        {
-          name: '帳單資訊',
-          data: billData.value.map((entry) => Number(entry.費用)),
-        },
-      ],
-    }));
-
-    return {
-      billType,
-      chartOptions,
-      getBillData,
-    };
+    billData.value = response.data.records
+      .map((entry) => entry.fields)
+      .sort((a, b) => a.年月.localeCompare(b.年月));
+  } catch (e) {
+    console.error(e);
   }
+};
+
+onMounted(() => {
+  getBillData();
 });
+
+const chartOptions = computed(() => ({
+  chart: {
+    type: 'line',
+  },
+  title: {
+    text: '年月',
+  },
+  xAxis: {
+    categories: billData.value.map((entry) => entry.年月),
+  },
+  yAxis: {
+    title: {
+      text: '費用',
+      align: 'high',
+      offset: 0,
+      rotation: 0,
+      y: -10,
+    },
+  },
+  series: [
+    {
+      name: '帳單資訊',
+      data: billData.value.map((entry) => Number(entry.費用)),
+    },
+  ],
+}));
+
 </script>
