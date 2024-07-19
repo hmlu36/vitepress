@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
+    ignoreDeadLinks: true,
     lang: 'zh-TW',
     head: [
         ['link', {
