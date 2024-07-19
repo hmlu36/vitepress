@@ -5,7 +5,7 @@
       name="billType-radio"
       value="Gas"
       v-model="billType"
-      @change="getBillData"
+      @click="getBillData($event)"
     />瓦斯</label
   >&emsp;
   <label
@@ -14,7 +14,7 @@
       name="billType-radio"
       value="Water"
       v-model="billType"
-      @change="getBillData"
+      @click="getBillData($event)"
     />水費</label
   >&emsp;
   <label
@@ -23,29 +23,41 @@
       name="billType-radio"
       value="Electricity"
       v-model="billType"
-      @change="getBillData"
+      @click="getBillData($event)"
     />電費</label
   >
   <br />
-  <div>
-    <!-- 使用動態組件 :is 來加載 HighchartsVue -->
-    <component :is="HighchartsVue" :options="chartOptions" />
-  </div>
+  <vue-highcharts
+    type="chart"
+    :options="chartOptions"
+    :redrawOnUpdate="true"
+    :oneToOneUpdate="false"
+    :animateOnUpdate="true"
+  />
 </template>
 
+<script>
+import VueHighcharts from 'vue3-highcharts';
+export default {
+  components: {
+    VueHighcharts,
+  },
+};
+</script>
+
 <script setup>
-import { ref, onMounted, computed, defineAsyncComponent } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import axios from 'axios';
-
-
-// 動態導入 HighchartsVue
-const HighchartsVue = defineAsyncComponent(() => import('highcharts-vue'));
 
 const billData = ref([]);
 const billType = ref('Gas');
 
-const getBillData = async () => {
-  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_BILL}/${billType.value}?maxRecords=100&view=data`;
+const getBillData = async (event) => {
+  const dataType = event == undefined ? 'Gas' : event.target.value;
+  console.log(dataType);
+  billType.value = dataType;
+
+  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_BILL}/${dataType}?maxRecords=100&view=data`;
   try {
     const response = await axios.get(url, {
       headers: {
@@ -56,12 +68,13 @@ const getBillData = async () => {
     billData.value = response.data.records
       .map((entry) => entry.fields)
       .sort((a, b) => a.年月.localeCompare(b.年月));
+    console.log(JSON.stringify(billData.value));
   } catch (e) {
-    console.error(e);
+    console.log(e);
   }
 };
 
-onMounted(() => {
+onMounted(async () => {
   getBillData();
 });
 
@@ -91,5 +104,4 @@ const chartOptions = computed(() => ({
     },
   ],
 }));
-
 </script>

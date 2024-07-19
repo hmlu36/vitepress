@@ -22,6 +22,7 @@
     "sweetalert2": "^11.6.13",
     "vee-validate": "^4.5.9",
     "vue": "^3.2.26",
-    "vue3-carousel": "^0.1.36"
+    "vue3-carousel": "^0.1.36",
+    "vue3-highcharts": "^0.1.3"
   }
 }
