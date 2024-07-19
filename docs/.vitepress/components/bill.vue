@@ -1,6 +1,6 @@
 <template>
-  <label
-    ><input
+  <label>
+    <input
       type="radio"
       name="billType-radio"
       value="Gas"
@@ -8,8 +8,8 @@
       @click="getBillData($event)"
     />瓦斯</label
   >&emsp;
-  <label
-    ><input
+  <label>
+    <input
       type="radio"
       name="billType-radio"
       value="Water"
@@ -17,8 +17,8 @@
       @click="getBillData($event)"
     />水費</label
   >&emsp;
-  <label
-    ><input
+  <label>
+    <input
       type="radio"
       name="billType-radio"
       value="Electricity"
@@ -27,81 +27,34 @@
     />電費</label
   >
   <br />
-  <vue-highcharts
-    type="chart"
+  <highcharts
+    :constructor-type="'chart'"
     :options="chartOptions"
-    :redrawOnUpdate="true"
-    :oneToOneUpdate="false"
-    :animateOnUpdate="true"
-  />
+  ></highcharts>
 </template>
 
 <script>
-import VueHighcharts from 'vue3-highcharts';
-export default {
+import { defineComponent } from 'vue';
+import Highcharts from 'highcharts';
+import HighchartsVue from 'highcharts-vue';
+
+export default defineComponent({
+  name: 'Bill',
   components: {
-    VueHighcharts,
+    highcharts: HighchartsVue.component
   },
-};
-</script>
-
-<script setup>
-import { onMounted, computed, ref } from 'vue';
-import axios from 'axios';
-
-const billData = ref([]);
-const billType = ref('Gas');
-
-const getBillData = async (event) => {
-  const dataType = event == undefined ? 'Gas' : event.target.value;
-  console.log(dataType);
-  billType.value = dataType;
-
-  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_BILL}/${dataType}?maxRecords=100&view=data`;
-  try {
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: 'Bearer ' + import.meta.env.VITE_AIRTALBE_API_KEY,
-        'Content-Type': 'application/json',
-      },
-    });
-    billData.value = response.data.records
-      .map((entry) => entry.fields)
-      .sort((a, b) => a.年月.localeCompare(b.年月));
-    console.log(JSON.stringify(billData.value));
-  } catch (e) {
-    console.log(e);
+  data() {
+    return {
+      billType: '',
+      chartOptions: {
+        // 定義你的圖表選項
+      }
+    };
+  },
+  methods: {
+    getBillData(event) {
+      // 實現獲取賬單數據的邏輯
+    }
   }
-};
-
-onMounted(async () => {
-  getBillData();
 });
-
-const chartOptions = computed(() => ({
-  chart: {
-    type: 'line',
-  },
-  title: {
-    text: '年月',
-  },
-  xAxis: {
-    categories: billData.value.map((entry) => entry.年月),
-  },
-  yAxis: {
-    title: {
-      text: '費用',
-      align: 'high',
-      offset: 0,
-      rotation: 0,
-      y: -10,
-    },
-  },
-  series: [
-    {
-      name: '帳單資訊',
-      data: billData.value.map((entry) => Number(entry.費用)),
-    },
-  ],
-}));
 </script>
