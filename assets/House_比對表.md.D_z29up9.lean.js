@@ -1,0 +1,1 @@
+import{_ as t,c as d,o as r,a2 as e}from"./chunks/framework.4_bZ6nyl.js";const m=JSON.parse('{"title":"比對表","description":"","frontmatter":{},"headers":[],"relativePath":"House/比對表.md","filePath":"House/比對表.md"}'),a={name:"House/比對表.md"},_=e("",2),o=[_];function s(c,n,h,i,b,l){return r(),d("div",null,o)}const u=t(a,[["render",s]]);export{m as __pageData,u as default};
