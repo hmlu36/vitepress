@@ -28,18 +28,18 @@
   >
   <br />
   <div>
-    <!-- 使用 v-if 確保 HighchartsVue 只在客戶端渲染 -->
-    <component :is="HighchartsVue" v-if="HighchartsVue" :options="chartOptions" />
+    <!-- 使用動態組件 :is 來加載 HighchartsVue -->
+    <component :is="HighchartsVue" :options="chartOptions" />
   </div>
 </template>
 
 <script setup>
-import { defineComponent, ref, onMounted, computed, defineAsyncComponent } from 'vue';
+import { ref, onMounted, computed, defineAsyncComponent } from 'vue';
 import axios from 'axios';
 
-// 動態導入 highcharts-vue
-const HighchartsVue = defineAsyncComponent(() => import('highcharts-vue'));
 
+// 動態導入 HighchartsVue
+const HighchartsVue = defineAsyncComponent(() => import('highcharts-vue'));
 
 const billData = ref([]);
 const billType = ref('Gas');
