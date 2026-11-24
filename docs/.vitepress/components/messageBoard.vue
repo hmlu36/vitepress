@@ -102,13 +102,13 @@ export default {
 
 .message-card {
   width: 100%;
+  min-height: 60vh;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: clamp(2rem, 6vw, 6rem);
-  border: 1px solid rgba(198, 156, 86, 0.45);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.8);
   color: #765a2b;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .message {
