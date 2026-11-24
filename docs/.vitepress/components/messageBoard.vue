@@ -15,7 +15,6 @@
       </Transition>
       <div v-if="records.length > 1" class="controls">
         <button type="button" aria-label="上一則留言" @click="showPrevious">‹</button>
-        <span>{{ currentIndex + 1 }} / {{ records.length }}</span>
         <button type="button" aria-label="下一則留言" @click="showNext">›</button>
       </div>
     </section>
@@ -82,21 +81,29 @@ export default {
 
 <style scoped>
 .message-board {
-  max-width: 900px;
+  width: min(94vw, 1600px);
+  min-height: 82vh;
   margin: 0 auto;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 4rem);
 }
 
 .marquee {
   position: relative;
-  min-height: 190px;
-  display: grid;
-  align-content: center;
-  padding-bottom: 2.5rem;
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 4rem;
 }
 
 .message-card {
-  padding: 1.25rem 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: clamp(2rem, 6vw, 6rem);
   border: 1px solid rgba(198, 156, 86, 0.45);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.8);
@@ -107,14 +114,16 @@ export default {
 .message {
   margin: 0;
   text-align: left;
-  line-height: 1.8;
+  font-size: clamp(2rem, 5vw, 5rem);
+  line-height: 1.6;
   white-space: pre-wrap;
 }
 
 .signature {
-  margin: 0.75rem 0 0;
+  margin: clamp(1.5rem, 4vw, 3rem) 0 0;
   text-align: right;
   font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 3rem);
 }
 
 .status {
@@ -125,25 +134,24 @@ export default {
 
 .controls {
   position: absolute;
-  right: 0;
+  right: 1rem;
   bottom: 0;
-  left: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: flex-end;
+  gap: 1.25rem;
   color: #765a2b;
 }
 
 .controls button {
-  width: 2rem;
-  height: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border: 1px solid #c69c56;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.8);
   color: #765a2b;
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 2rem;
   line-height: 1;
 }
 
@@ -166,9 +174,4 @@ export default {
   color: #b42318;
 }
 
-@media (min-width: 640px) {
-  .message {
-    font-size: 1.25rem;
-  }
-}
 </style>
