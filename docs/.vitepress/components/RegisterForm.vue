@@ -422,7 +422,7 @@ export default {
         {
           method: 'POST',
           headers: {
-            Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY,
+            Authorization: 'Bearer ' + import.meta.env.VITE_AIRTABLE_TOKEN,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data),

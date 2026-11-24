@@ -18,10 +18,9 @@ jobs:
   build:
     name: Build and deploy gh-pages
     env:
-      VITE_APP_KEY: ${{secrets.VITE_APP_KEY}}
+      VITE_AIRTABLE_TOKEN: ${{secrets.VITE_AIRTABLE_TOKEN}}
       VITE_APP_ID_WEDDINGFORM: ${{secrets.VITE_APP_ID_WEDDINGFORM}}
       VITE_APP_ID_BILL: ${{secrets.VITE_APP_ID_BILL}}
-      VITE_AIRTALBE_API_KEY: ${{secrets.VITE_AIRTALBE_API_KEY}}
     runs-on: ubuntu-latest
     environment:
       name: github-pages

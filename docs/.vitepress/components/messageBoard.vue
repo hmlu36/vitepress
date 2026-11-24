@@ -30,7 +30,7 @@ export default {
     loadData() {
       fetch(`https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_WEDDINGFORM}/WeddingForm`, {
           headers: {
-            Authorization: "Bearer " + import.meta.env.VITE_APP_KEY,
+            Authorization: "Bearer " + import.meta.env.VITE_AIRTABLE_TOKEN,
             "Content-Type": "application/json",
           },
         })

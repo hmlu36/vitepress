@@ -60,7 +60,7 @@ const getBillData = async (event) => {
   try {
     const response = await fetch(url, {
       headers: {
-        Authorization: 'Bearer ' + import.meta.env.VITE_AIRTALBE_API_KEY,
+        Authorization: 'Bearer ' + import.meta.env.VITE_AIRTABLE_TOKEN,
         'Content-Type': 'application/json',
       },
     });
