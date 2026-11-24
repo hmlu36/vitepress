@@ -1,13 +1,14 @@
 <template>
-  <Carousel :autoplay="5000" :wrap-around="true">
+  <Carousel :autoplay="5000" :wrap-around="true" :items-to-show="1" :transition="500">
     <Slide v-for="slide in slides" :key="slide">
       <div class="carousel__item">
-        <span style="font-size: 40px;"><strong>{{ slide.replace(".jpg", "") }}</strong></span><br/>
-        <img :src="'../photo/' + slide" />
+        <p class="photo-caption"><strong>{{ slide.replace(/\.jpg$/i, '') }}</strong></p>
+        <img :src="`${baseUrl}photo/${encodeURIComponent(slide)}`" :alt="slide.replace(/\.jpg$/i, '')" />
       </div>
     </Slide>
 
     <template #addons>
+      <Navigation />
       <Pagination />
     </template>
   </Carousel>
@@ -26,25 +27,37 @@ export default {
     Navigation,
   },
   setup() {
-    //const photos = require.context("/photo/", true, /\.jpg$/);
-
-    //const url = new URL('/photo', import.meta.url).href
-    //console.log(url);
-    //const photos = import.meta.globEager(`/photo/*.jpg`);
-    //console.log(JSON.stringify(photos));
-
     const photosObject = import.meta.glob('../../public/photo/*.jpg');
     const slides = Object.keys(photosObject).map((photo) =>
       photo.replace('../../public/photo/', '')
-    );
-    console.log(slides);
+    ).sort();
+    const baseUrl = import.meta.env.BASE_URL;
 
-    return { slides };
+    return { slides, baseUrl };
   },
 };
 </script>
 
-<style>
+<style scoped>
+.carousel__item {
+  width: 100%;
+  padding: 0 3rem;
+  box-sizing: border-box;
+}
+
+.photo-caption {
+  margin: 0 0 1rem;
+  font-size: clamp(1.25rem, 3vw, 2.5rem);
+  overflow-wrap: anywhere;
+}
+
+.carousel__item img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 12rem);
+  object-fit: contain;
+}
+
 .carousel__prev--in-active,
 .carousel__next--in-active {
   display: none;
