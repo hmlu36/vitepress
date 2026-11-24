@@ -113,7 +113,7 @@ export default {
 
 .message {
   margin: 0;
-  text-align: left;
+  text-align: center;
   font-size: clamp(2rem, 5vw, 5rem);
   line-height: 1.6;
   white-space: pre-wrap;
@@ -121,7 +121,7 @@ export default {
 
 .signature {
   margin: clamp(1.5rem, 4vw, 3rem) 0 0;
-  text-align: right;
+  text-align: center;
   font-weight: 600;
   font-size: clamp(1.5rem, 3vw, 3rem);
 }
