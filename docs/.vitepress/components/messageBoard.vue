@@ -81,9 +81,9 @@ export default {
 
 <style scoped>
 .message-board {
-  width: min(94vw, 1600px);
+  width: 100%;
   min-height: 82vh;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,7 +113,7 @@ export default {
 
 .message {
   margin: 0;
-  text-align: center;
+  text-align: left;
   font-size: clamp(2rem, 5vw, 5rem);
   line-height: 1.6;
   white-space: pre-wrap;
@@ -121,7 +121,7 @@ export default {
 
 .signature {
   margin: clamp(1.5rem, 4vw, 3rem) 0 0;
-  text-align: center;
+  text-align: left;
   font-weight: 600;
   font-size: clamp(1.5rem, 3vw, 3rem);
 }
@@ -138,7 +138,7 @@ export default {
   bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 1.25rem;
   color: #765a2b;
 }
