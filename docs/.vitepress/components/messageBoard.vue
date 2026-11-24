@@ -81,9 +81,13 @@ export default {
 
 <style scoped>
 .message-board {
-  width: 100%;
+  width: 85vw;
   min-height: 82vh;
+  max-width: 85vw;
+  position: relative;
+  left: 50%;
   margin: 0;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,7 +111,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(2rem, 6vw, 6rem);
+  padding: clamp(2rem, 4vw, 4rem) 0;
   color: #765a2b;
 }
 
