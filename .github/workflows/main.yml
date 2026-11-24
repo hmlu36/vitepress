@@ -16,15 +16,12 @@ concurrency:
 
 jobs:
   build:
-    name: Build and deploy gh-pages
+    name: Build GitHub Pages
     env:
       VITE_AIRTABLE_TOKEN: ${{secrets.VITE_AIRTABLE_TOKEN}}
       VITE_APP_ID_WEDDINGFORM: ${{secrets.VITE_APP_ID_WEDDINGFORM}}
       VITE_APP_ID_BILL: ${{secrets.VITE_APP_ID_BILL}}
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 22
@@ -38,9 +35,18 @@ jobs:
       - name: npm run build
         run: npm run build
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./docs/.vitepress/dist
+
+  deploy:
+    name: Deploy GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
