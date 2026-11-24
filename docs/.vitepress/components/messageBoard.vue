@@ -22,24 +22,25 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data: () => ({
     records: [],
   }),
   methods: {
     loadData() {
-      axios
-        .get(`https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_WEDDINGFORM}/WeddingForm`, {
+      fetch(`https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_WEDDINGFORM}/WeddingForm`, {
           headers: {
             Authorization: "Bearer " + import.meta.env.VITE_APP_KEY,
             "Content-Type": "application/json",
           },
         })
         .then((response) => {
-          let data = response.data.records;
-          this.records = data
+          if (!response.ok) throw new Error(`Airtable request failed: ${response.status}`);
+          return response.json();
+        })
+        .then((data) => {
+          let records = data.records;
+          this.records = records
             .map((record) => record.fields)
             .filter((record) => !!record.想對我們說的話);
           //console.log(JSON.stringify(this.records));

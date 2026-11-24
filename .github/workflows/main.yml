@@ -3,45 +3,46 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build and deploy gh-pages
     env:
-      MY_SECRET: ${{secrets.commit_secret}}
-      USER_NAME: joshua.lu
-      USER_EMAIL: hmlu36@gmail.com
-      PUBLISH_DIR: ./docs/.vitepress/dist
       VITE_APP_KEY: ${{secrets.VITE_APP_KEY}}
       VITE_APP_ID_WEDDINGFORM: ${{secrets.VITE_APP_ID_WEDDINGFORM}}
       VITE_APP_ID_BILL: ${{secrets.VITE_APP_ID_BILL}}
       VITE_AIRTALBE_API_KEY: ${{secrets.VITE_AIRTALBE_API_KEY}}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.20.2]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install
-        run: |
-          npm install
+          node-version: 22
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Install dependencies
+        run: npm install
       - name: npm run build
-        run: |
-          npm run build
-      - name: Commit files
-        run: |
-          cd $PUBLISH_DIR
-          git init
-          git config --local user.name $USER_NAME
-          git config --local user.email $USER_EMAIL
-          git status
-          git remote add origin https://$MY_SECRET@github.com/$GITHUB_REPOSITORY.git
-          git checkout -b gh-pages
-          git add --all
-          git commit -m "deploy to Github pages"
-          git push origin gh-pages -f
-          echo 🤘 deploy gh-pages complete.
+        run: npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs/.vitepress/dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
           

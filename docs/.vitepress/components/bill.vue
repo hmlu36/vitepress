@@ -47,7 +47,6 @@ export default {
 
 <script setup>
 import { onMounted, computed, ref } from 'vue';
-import axios from 'axios';
 
 const billData = ref([]);
 const billType = ref('Gas');
@@ -59,13 +58,15 @@ const getBillData = async (event) => {
 
   const url = `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_BILL}/${dataType}?maxRecords=100&view=data`;
   try {
-    const response = await axios.get(url, {
+    const response = await fetch(url, {
       headers: {
         Authorization: 'Bearer ' + import.meta.env.VITE_AIRTALBE_API_KEY,
         'Content-Type': 'application/json',
       },
     });
-    billData.value = response.data.records
+    if (!response.ok) throw new Error(`Airtable request failed: ${response.status}`);
+    const result = await response.json();
+    billData.value = result.records
       .map((entry) => entry.fields)
       .sort((a, b) => a.年月.localeCompare(b.年月));
     console.log(JSON.stringify(billData.value));

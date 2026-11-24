@@ -348,7 +348,6 @@
 <script>
 import { reactive, onMounted, onBeforeMount } from 'vue';
 import { Field, Form, ErrorMessage, defineRule } from 'vee-validate';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 
 defineRule('required', (value) => {
@@ -418,19 +417,21 @@ export default {
       document
         .querySelector('.blockUI')
         .setAttribute('style', 'display:inline');
-      axios
-        .post(
-          `https://api.airtable.com/v0/${
-            import.meta.env.VITE_APP_ID
-          }/${airTableName}`,
-          data,
-          {
-            headers: {
-              Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY,
-              'Content-Type': 'application/json',
-            },
-          }
-        )
+      fetch(
+        `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID}/${airTableName}`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then(async (response) => {
+          if (!response.ok) throw new Error(`Airtable request failed: ${response.status}`);
+          return response.json();
+        })
         .then((response) => {
           document
             .querySelector('.blockUI')
@@ -446,7 +447,8 @@ export default {
             });
           }
         })
-        .catch((error) => {
+        .catch(() => {
+          document.querySelector('.blockUI').setAttribute('style', 'display:none');
           Swal.fire({
             icon: 'error',
             title: '儲存失敗',
