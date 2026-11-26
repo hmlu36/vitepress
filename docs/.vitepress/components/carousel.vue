@@ -1,21 +1,22 @@
 <template>
   <div class="carousel-wrapper" :style="{ maxWidth: containerMaxWidth }">
     <Carousel
+      ref="carouselRef"
       v-model="currentSlide"
       :autoplay="5000"
       :wrap-around="true"
-      :items-to-show="1"
+      :items-to-show="2"
+      snap-align="center"
       :transition="500"
     >
-      <Slide v-for="slide in slides" :key="slide.file">
-        <div class="carousel__item">
+      <Slide v-for="(slide, index) in slides" :key="slide.file">
+        <div class="carousel__item" @click="onSlideClick(index)">
           <p class="photo-caption"><strong>{{ slide.caption }}</strong></p>
           <img :src="slide.src" :alt="slide.caption" />
         </div>
       </Slide>
 
       <template #addons>
-        <Navigation />
         <Pagination />
       </template>
     </Carousel>
@@ -25,7 +26,7 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import { Carousel, Slide, Pagination } from 'vue3-carousel';
 
 const baseUrl = import.meta.env.BASE_URL;
 const photosObject = import.meta.glob('../../public/photo/*.{jpg,JPG}');
@@ -45,7 +46,15 @@ const slides = Object.keys(photosObject)
   });
 
 const currentSlide = ref(0);
+const carouselRef = ref(null);
 const containerMaxWidth = ref('1080px');
+
+// 點擊左右露出的照片卡切換（取代原本的箭頭）
+const onSlideClick = (index) => {
+  if (index !== currentSlide.value) {
+    carouselRef.value?.slideTo(index);
+  }
+};
 
 const resizeImage = () => {
   const activeSlide = slides[currentSlide.value];
@@ -76,8 +85,22 @@ onMounted(() => {
 
 .carousel__item {
   width: 100%;
-  padding: 0 3rem;
+  padding: 0 1rem;
   box-sizing: border-box;
+}
+
+/* 前後照片卡淡出顯示，點擊可切換 */
+.carousel__slide {
+  opacity: 0.45;
+  transition: opacity 0.5s ease;
+}
+
+.carousel__slide--active {
+  opacity: 1;
+}
+
+.carousel__slide:not(.carousel__slide--active) .carousel__item {
+  cursor: pointer;
 }
 
 .photo-caption {
@@ -94,8 +117,4 @@ onMounted(() => {
   object-fit: contain;
 }
 
-.carousel__prev--in-active,
-.carousel__next--in-active {
-  display: none;
-}
 </style>
