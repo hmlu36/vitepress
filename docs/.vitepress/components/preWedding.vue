@@ -1,5 +1,5 @@
 <template>
-  <div class="pre-wedding-wrapper" :style="{ maxWidth: containerMaxWidth }">
+  <div ref="carouselWrapper" class="pre-wedding-wrapper" :style="{ maxWidth: containerMaxWidth }">
     <Carousel
       ref="carouselRef"
       v-model="currentSlide"
@@ -17,17 +17,14 @@
           @click="onPhotoClick(index)"
         />
       </Slide>
-      <template #addons>
-        <Pagination />
-      </template>
     </Carousel>
   </div>
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination } from 'vue3-carousel';
+import { Carousel, Slide } from 'vue3-carousel';
 
 const baseUrl = import.meta.env.BASE_URL;
 const photos = Object.keys(import.meta.glob('../../public/preWedding/*.{jpg,JPG}'))
@@ -40,7 +37,10 @@ const photos = Object.keys(import.meta.glob('../../public/preWedding/*.{jpg,JPG}
 
 const currentSlide = ref(0);
 const carouselRef = ref(null);
+const carouselWrapper = ref(null);
 const containerMaxWidth = ref('100%');
+
+let resizeObserver;
 
 // 點擊左右露出的照片卡切換（取代原本的箭頭）
 const onPhotoClick = (index) => {
@@ -71,6 +71,18 @@ watch(currentSlide, () => {
 
 onMounted(() => {
   resizeImage();
+
+  // 容器寬度隨直/橫式照片變化時，同步重算輪播位移，避免照片卡在中間
+  if (typeof ResizeObserver !== 'undefined' && carouselWrapper.value) {
+    resizeObserver = new ResizeObserver(() => {
+      carouselRef.value?.updateSlideWidth();
+    });
+    resizeObserver.observe(carouselWrapper.value);
+  }
+});
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect();
 });
 </script>
 
