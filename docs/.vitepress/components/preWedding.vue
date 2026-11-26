@@ -5,7 +5,7 @@
       v-model="currentSlide"
       :autoplay="5000"
       :wrap-around="true"
-      :items-to-show="2"
+      :items-to-show="1.2"
       snap-align="center"
       :transition="500"
     >
@@ -40,7 +40,7 @@ const photos = Object.keys(import.meta.glob('../../public/preWedding/*.{jpg,JPG}
 
 const currentSlide = ref(0);
 const carouselRef = ref(null);
-const containerMaxWidth = ref('1080px');
+const containerMaxWidth = ref('100%');
 
 // 點擊左右露出的照片卡切換（取代原本的箭頭）
 const onPhotoClick = (index) => {
@@ -49,6 +49,7 @@ const onPhotoClick = (index) => {
   }
 };
 
+// 依照片方向調整容器寬度，讓直式/橫式照片交錯時都能貼合顯示、大小一致
 const resizeImage = () => {
   const activePhoto = photos[currentSlide.value];
   if (!activePhoto || typeof window === 'undefined') return;
@@ -56,7 +57,11 @@ const resizeImage = () => {
   const img = new Image();
   img.src = activePhoto.src;
   img.onload = ({ target }) => {
-    containerMaxWidth.value = target.width > target.height ? '1080px' : '720px';
+    if (target.width > target.height) {
+      containerMaxWidth.value = '88%';
+    } else {
+      containerMaxWidth.value = window.innerWidth > 768 ? '42vw' : '100%';
+    }
   };
 };
 
@@ -80,19 +85,9 @@ onMounted(() => {
   display: block;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   max-height: calc(100vh - 8rem);
   object-fit: contain;
-}
-
-/* 前後照片卡淡出顯示，點擊可切換 */
-.carousel__slide {
-  opacity: 0.45;
-  transition: opacity 0.5s ease;
-}
-
-.carousel__slide--active {
-  opacity: 1;
 }
 
 .carousel__slide:not(.carousel__slide--active) .pre-wedding-photo {
