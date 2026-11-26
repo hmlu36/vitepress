@@ -37,12 +37,14 @@ export default {
       this.currentIndex = (this.currentIndex - 1 + this.records.length) % this.records.length;
     },
     async loadData() {
+      const appId = import.meta.env.VITE_APP_ID_WEDDINGFORM || import.meta.env.VITE_APP_ID;
+      const token = import.meta.env.VITE_AIRTABLE_TOKEN || import.meta.env.VITE_APP_KEY;
       try {
         const response = await fetch(
-          `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID_WEDDINGFORM}/WeddingForm`,
+          `https://api.airtable.com/v0/${appId}/WeddingForm`,
           {
-          headers: {
-              Authorization: 'Bearer ' + import.meta.env.VITE_AIRTABLE_TOKEN,
+            headers: {
+              Authorization: 'Bearer ' + token,
               'Content-Type': 'application/json',
             },
           },

@@ -7,5 +7,36 @@ body {
   .VPLocalNav {
     display: none !important;
   }
+}
 
+/* 座位表：玫瑰粉底色 */
+.Layout.rose-background {
+  background-color: #ecd7d0;
+  min-height: 100vh;
+}
+
+/* 留言板與滿版相簿：背景圖片與滿版寬度設定 */
+.Layout.messageBackground,
+.Layout.fullWidth {
+  background-image: url('/%E7%95%99%E8%A8%80%E6%9D%BF.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.Layout.fullWidth .VPDoc,
+.Layout.messageBackground .VPDoc {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.Layout.fullWidth .VPDoc .container,
+.Layout.fullWidth .VPDoc .content,
+.Layout.fullWidth .VPDoc .content-container,
+.Layout.messageBackground .VPDoc .container,
+.Layout.messageBackground .VPDoc .content,
+.Layout.messageBackground .VPDoc .content-container {
+  max-width: 100% !important;
 }

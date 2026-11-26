@@ -380,9 +380,11 @@ export default {
   setup(props, context) {
     let registerForm = reactive({});
     const airTableName = 'WeddingForm';
+    const baseUrl = import.meta.env.BASE_URL;
 
     const onSubmit = () => {
-      //console.log(JSON.stringify(registerForm));
+      const appId = import.meta.env.VITE_APP_ID_WEDDINGFORM || import.meta.env.VITE_APP_ID;
+      const token = import.meta.env.VITE_AIRTABLE_TOKEN || import.meta.env.VITE_APP_KEY;
 
       let data = {
         fields: {
@@ -412,17 +414,16 @@ export default {
           想對我們說的話: registerForm.message,
         },
       };
-      //console.log(JSON.stringify(data));
 
-      document
-        .querySelector('.blockUI')
-        .setAttribute('style', 'display:inline');
+      const blockUI = document.querySelector('.blockUI');
+      if (blockUI) blockUI.setAttribute('style', 'display:inline');
+
       fetch(
-        `https://api.airtable.com/v0/${import.meta.env.VITE_APP_ID}/${airTableName}`,
+        `https://api.airtable.com/v0/${appId}/${airTableName}`,
         {
           method: 'POST',
           headers: {
-            Authorization: 'Bearer ' + import.meta.env.VITE_AIRTABLE_TOKEN,
+            Authorization: 'Bearer ' + token,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data),
@@ -433,10 +434,9 @@ export default {
           return response.json();
         })
         .then((response) => {
-          document
-            .querySelector('.blockUI')
-            .setAttribute('style', 'display:none');
-          if (!!response && !!response.data.id) {
+          if (blockUI) blockUI.setAttribute('style', 'display:none');
+          const recordId = response?.id || response?.data?.id;
+          if (recordId) {
             Swal.fire({
               icon: 'success',
               title: '儲存成功',
@@ -448,7 +448,7 @@ export default {
           }
         })
         .catch(() => {
-          document.querySelector('.blockUI').setAttribute('style', 'display:none');
+          if (blockUI) blockUI.setAttribute('style', 'display:none');
           Swal.fire({
             icon: 'error',
             title: '儲存失敗',
@@ -457,29 +457,15 @@ export default {
         });
     };
     onBeforeMount(() => {
-      
-      const icon = document.createElement('link');
-      icon.setAttribute(
-        'ref',
-        'icon'
-      ); icon.setAttribute(
-        'href',
-        '../../public/images/Wedding-Rings.ico'
-      );
-      icon.async = true;
-      document.head.appendChild(icon);
+      if (typeof document === 'undefined') return;
 
-      const materializeJs = document.createElement('script');
-      materializeJs.setAttribute(
-        'src',
-        'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'
-      );
-      materializeJs.async = true;
-      document.head.appendChild(materializeJs);
+      const icon = document.createElement('link');
+      icon.setAttribute('rel', 'icon');
+      icon.setAttribute('href', `${baseUrl}images/Wedding-Rings.ico`);
+      document.head.appendChild(icon);
     });
     onMounted(() => {
-      const textNeedCount = document.querySelectorAll('.wordcount');
-      //M.CharacterCounter.init(textNeedCount);
+      // Character counter handled via HTML maxlength/data-length
     });
     return {
       onSubmit,

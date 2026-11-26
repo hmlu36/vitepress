@@ -1,88 +1,87 @@
 const path = require('path');
 const fs = require('fs');
-const matter = require('gray-matter');
 
-const readFilesFromDir = (path) => {
-    const files = fs.readdirSync(path);
+const readFilesFromDir = (dirPath) => {
+    const files = fs.readdirSync(dirPath, { withFileTypes: true });
     return files
-        .filter((file) => file !== 'index.md')
-        .map((file) => file.slice(0, -3));
+        .filter((entry) => entry.isFile() && entry.name.endsWith('.md') && entry.name.toLowerCase() !== 'index.md')
+        .map((entry) => entry.name.slice(0, -3));
 };
 
 const getSidebars = (dir) => {
     const dirPath = path.join(__dirname, '..', dir);
-    //console.log(dirPath);
     const files = readFilesFromDir(dirPath);
-    const result = files.map((file) => ({
+    return files.map((file) => ({
         text: file,
-        link: `/${dir}/${file}.html`,
+        link: `/${dir}/${file}`,
     }));
-    //console.log(result);
-    return result;
 };
-/*
-const getPosts = (dir) => {
-    const postDir = path.resolve(__dirname, '..', dir);
-    return fs
-        .readdirSync(postDir)
-        .map((file) => {
-            const src = fs.readFileSync(path.join(postDir, file), 'utf-8');
-            const { data, content, excerpt } = matter(src, { excerpt: true });
-            if (data.title) {
-                console.log(JSON.stringify(data));
-                const post = {
-                    title: data.title,
-                    href: `/${dir}/${file.replace(/\.md$/, '.html')}`,
-                    date: formatDate(data.date),
-                    excerpt
-                };
-                return post;
-            }
-        })
-        .sort((a, b) => b.date.time - a.date.time);
-};
-
-const formatDate = (date) => {
-    if (!date instanceof Date) {
-        date = new Date(date);
-    }
-    date.setUTCHours(12);
-    return {
-        time: +date,
-        string: date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        })
-    };
-};
-*/
 
 module.exports = {
     '/Bike/': [
         {
             text: '🚴假日騎士日誌',
-            children: getSidebars('Bike/BikeTravel')
+            link: '/Bike/BikeTravel/',
+            collapsed: false,
+            items: getSidebars('Bike/BikeTravel'),
         },
         {
             text: '🚲自行車know-how',
-            children: getSidebars('Bike/BikeInfo')
+            link: '/Bike/BikeInfo/',
+            collapsed: false,
+            items: getSidebars('Bike/BikeInfo'),
         },
     ],
     '/WorkSkill/': [
         {
             text: '💼工作技巧',
-            children: getSidebars('WorkSkill')
-            //children: [
-            //    { text: 'Unix 指令', link: '/WorkSkill/Unix 指令.html'},
-            //    { text: 'SQL Server 分頁技巧', link: '/WorkSkill/SQL Server Pagination.html'},
-            //]
+            link: '/WorkSkill/',
+            collapsed: false,
+            items: getSidebars('WorkSkill'),
+        },
+        {
+            text: '🐍Python',
+            link: '/WorkSkill/Python/',
+            collapsed: false,
+            items: getSidebars('WorkSkill/Python'),
+        },
+        {
+            text: '⚡Vite',
+            link: '/WorkSkill/Vite/',
+            collapsed: false,
+            items: getSidebars('WorkSkill/Vite'),
+        },
+    ],
+    '/Stock/': [
+        {
+            text: '📈股市',
+            link: '/Stock/',
+            collapsed: false,
+            items: getSidebars('Stock'),
         },
     ],
     '/Wedding/': [
         {
             text: '💏婚禮相關',
-            children: getSidebars('Wedding')
+            link: '/Wedding/',
+            collapsed: false,
+            items: getSidebars('Wedding'),
         },
-    ]
+    ],
+    '/Geosat/': [
+        {
+            text: '🛰️經緯航太',
+            link: '/Geosat/',
+            collapsed: false,
+            items: getSidebars('Geosat'),
+        },
+    ],
+    '/House/': [
+        {
+            text: '🏠房屋',
+            link: '/House/',
+            collapsed: false,
+            items: getSidebars('House'),
+        },
+    ],
 };
