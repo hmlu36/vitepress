@@ -56,23 +56,46 @@ const onSlideClick = (index) => {
 };
 
 // 依照片方向調整容器寬度，讓直式/橫式照片交錯時都能貼合顯示、大小一致
-const resizeImage = () => {
-  const activeSlide = slides[currentSlide.value];
-  if (!activeSlide || typeof window === 'undefined') return;
+// 快取量測結果，切換時「同步」套用容器寬度，避免在滑動動畫中間才改變尺寸導致卡在一半
+const orientationCache = {};
 
+const applyContainerWidth = (index) => {
+  const item = slides[index];
+  if (!item || typeof window === 'undefined') return;
+
+  const orientation = orientationCache[item.file];
+  if (orientation !== 'landscape' && orientation !== 'portrait') return;
+
+  containerMaxWidth.value = orientation === 'landscape'
+    ? '88%'
+    : (window.innerWidth > 768 ? '42vw' : '100%');
+};
+
+const measureOrientation = (index) => {
+  const item = slides[index];
+  if (!item || orientationCache[item.file] || typeof window === 'undefined') return;
+
+  orientationCache[item.file] = 'measuring';
   const img = new Image();
-  img.src = activeSlide.src;
+  img.src = item.src;
   img.onload = ({ target }) => {
-    if (target.width > target.height) {
-      containerMaxWidth.value = '88%';
-    } else {
-      containerMaxWidth.value = window.innerWidth > 768 ? '42vw' : '100%';
+    orientationCache[item.file] = target.width > target.height ? 'landscape' : 'portrait';
+    if (index === currentSlide.value) {
+      applyContainerWidth(index);
     }
   };
 };
 
-watch(currentSlide, () => {
+const resizeImage = () => {
+  applyContainerWidth(currentSlide.value);
+  measureOrientation(currentSlide.value);
+};
+
+watch(currentSlide, (index) => {
   resizeImage();
+  // 預先量測前後照片的方向，之後切換時容器寬度就能立即生效
+  measureOrientation((index + 1) % slides.length);
+  measureOrientation((index - 1 + slides.length) % slides.length);
 });
 
 onMounted(() => {
@@ -97,7 +120,6 @@ onBeforeUnmount(() => {
 .carousel-wrapper {
   width: 100%;
   margin: 0 auto;
-  transition: max-width 0.3s ease;
 }
 
 .carousel__item {
