@@ -150,15 +150,27 @@ export default {
 }
 
 .controls button {
-  width: 3.5rem;
-  height: 3.5rem;
-  border: 1px solid #c69c56;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.8);
+  width: 3rem;
+  height: 2.75rem;
+  border: 1px solid rgba(118, 90, 43, 0.35);
+  border-radius: 0.75rem;
+  background: rgba(255, 250, 240, 0.72);
   color: #765a2b;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 1;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.controls button:hover {
+  background: rgba(255, 250, 240, 0.95);
+  border-color: #765a2b;
+  transform: translateY(-2px);
+}
+
+.controls button:focus-visible {
+  outline: 2px solid #765a2b;
+  outline-offset: 3px;
 }
 
 .message-enter-active,

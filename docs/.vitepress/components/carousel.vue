@@ -5,12 +5,12 @@
       v-model="currentSlide"
       :autoplay="5000"
       :wrap-around="true"
-      :items-to-show="1.2"
+      :items-to-show="1"
       snap-align="center"
       :transition="500"
     >
-      <Slide v-for="(slide, index) in slides" :key="slide.file">
-        <div class="carousel__item" @click="onSlideClick(index)">
+      <Slide v-for="slide in slides" :key="slide.file">
+        <div class="carousel__item">
           <p class="photo-caption"><strong>{{ slide.caption }}</strong></p>
           <img :src="slide.src" :alt="slide.caption" />
         </div>
@@ -42,14 +42,6 @@ const slides = Object.keys(photosObject)
   });
 
 const currentSlide = ref(0);
-const carouselRef = ref(null);
-
-// 點擊左右露出的照片卡切換（取代原本的箭頭）
-const onSlideClick = (index) => {
-  if (index !== currentSlide.value) {
-    carouselRef.value?.slideTo(index);
-  }
-};
 
 </script>
 
@@ -79,7 +71,8 @@ const onSlideClick = (index) => {
 .carousel__item img {
   display: block;
   width: 100%;
-  max-height: calc(100vh - 12rem);
+  height: calc(100vh - 12rem);
+  margin: 0 auto;
   object-fit: contain;
 }
 
